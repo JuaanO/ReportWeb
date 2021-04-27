@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/java/features",
         glue = "steps",
         plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-                "pretty","json:target/report/cucumber/cucumber.json",
+                "json:target/report/cucumber/cucumber.json",
                 "html:target/report/cucumber/cucumber.html"},
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         tags = {"@SendMessageOutline,@ViewReportOutline"}
