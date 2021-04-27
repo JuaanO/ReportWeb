@@ -1,16 +1,6 @@
 Feature: Sending of messages of different types (failed, and successful)
   I wanna do a "Fast send" campaigns of type"SMS", with all possible status
 
-#  @SendMessage
-#  Scenario: Send a message with all possible statuses
-#    Given a user logged to Tellit choose a SMS option
-#    When the user do a Valid campain
-#
-#  @SendMessage
-#  Scenario: Send a message with all possible statuses
-#    Given a user logged to Tellit choose a "SMS" option
-#    And the user do a "Invalid" campain
-
   @SendMessage
   Scenario Outline: Send a message with all possible statuses
     Given a user logged to Tellit choose a <Option> option
@@ -18,7 +8,7 @@ Feature: Sending of messages of different types (failed, and successful)
     Examples:
       | Option | Status  |
       | SMS    | valid   |
-
+      | SMS    | Invalid |
 
 #  @archivo
 #  Scenario Outline: realizar una camapana masiva

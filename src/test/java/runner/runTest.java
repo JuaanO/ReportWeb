@@ -11,8 +11,7 @@ import org.junit.runner.RunWith;
         plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/report/cucumber/cucumber.json",
                 "html:target/report/cucumber/cucumber.html"},
-        snippets = CucumberOptions.SnippetType.CAMELCASE,
-        tags = {"@SendMessageOutline,@ViewReportOutline"}
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 
 public class runTest {
