@@ -32,17 +32,6 @@ public class SmsPage {
 
     }
 
-//    public void createMessageType(String type) throws IOException {
-//        switch (type){
-//        case "Valid":
-//            createMessage(1);
-//            break;
-//        case "Invalid":
-//            createMessage(2);
-//            break;
-//        }
-//    }
-
     public void createMessage(String type) throws IOException {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
@@ -58,11 +47,6 @@ public class SmsPage {
         }
     }
 
-    public void proccessMessage() throws InterruptedException {
-        driver.findElement(processButton).click();
-        sleep(1000);
-    }
-
     public void sendMessage() throws InterruptedException {
         driver.findElement(processButton).click();
         sleep(1000);
@@ -70,18 +54,60 @@ public class SmsPage {
         sleep(1000);
     }
 
-    public void closeModal(){
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        WebElement elemento = wait.until(ExpectedConditions.presenceOfElementLocated(closeModal));
-        elemento.click();
+    public void chooseMassiveCampaign() {
+        driver.findElement(By.xpath("//*[@id='navSendArchive']")).click();
     }
 
-    public void chooseOption(){
-        driver.findElement(reportOption).click();
-        driver.findElement(reportSmsOption).click();
+    public void chooseDataSource(String fuente) throws InterruptedException{
+
+        if(fuente.equals("grupos")){
+//            driver.findElement(By.xpath("//select[@id='addresseeSourceSelect']")).click();
+//            sleep(3000);
+            driver.findElement(By.xpath("//option[normalize-space()='Groups']")).click();
+            sleep(3000);
+        }else {
+            driver.findElement(By.xpath(""));
+        }
     }
 
-    public void assertionSms(){
-        Assert.assertTrue(driver.findElement(By.xpath("//h2[normalize-space()='Reporte Detallados']")).getText().contains("Reporte Detallados"));
+    public void chooseTypeMessage(String tipo) {
+        switch (tipo){
+            case "Normal SMS":
+                driver.findElement(By.xpath("//option[normalize-space()='Normal SMS']")).click();
+                break;
+            case "Flash SMS":
+                driver.findElement(By.xpath("//option[normalize-space()='Flash SMS']")).click();
+                break;
+            case "Attached Doc":
+                driver.findElement(By.xpath("//option[normalize-space()='Attached Doc']")).click();
+                break;
+            case "Premium SMS":
+                driver.findElement(By.xpath("//option[@value='7']")).click();
+                break;
+        }
+    }
+
+    public void chooseGroup() {
+
+        driver.findElement(By.xpath("//label[@for='exampleCheck1']")).click();
+    }
+
+    public void loadGroup() {
+
+        driver.findElement(By.xpath("//button[normalize-space()='Cargar']")).click();
+    }
+
+    public void inputChampaignName() {
+        driver.findElement(By.xpath("//input[@id='campaignNameInput']")).sendKeys("prueba campana");
+
+    }
+
+    public void message(String datos) {
+        driver.findElement(By.xpath("//*[@id='campaignContent']")).sendKeys("Texto de prueba");
+        //*[@id="campaignContent"]
+    }
+
+    public void nextStep() {
+        driver.findElement(By.xpath("//*[@id='stepTwoNextBtn']")).click();
     }
 }

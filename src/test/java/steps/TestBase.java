@@ -14,5 +14,5 @@ public class TestBase {
     protected SmsPage smsPage = new SmsPage(driver);
     protected DetailedReportPage detailedReportPage = new DetailedReportPage(driver);
     protected smsReportPage smsReportPage = new smsReportPage(driver);
-//    protected SendMessage sendMessage = new SendMessage(driver);
+//    protected SmsPage smsPage = new SmsPage(driver);
 }
