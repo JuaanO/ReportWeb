@@ -103,14 +103,14 @@ public class SmsPage {
     }
 
     public void inputChampaignName() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//input[@id='campaignNameInput']")).sendKeys("prueba campana");
-
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='campaignNameInput']")))
+                .sendKeys("prueba campana");
     }
 
     public void message(String datos) {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//*[@id='campaignContent']")).sendKeys("Texto de prueba");
+          WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).sendKeys("Texto de prueba");
     }
 
     public void goToThirdStep() {
@@ -120,7 +120,7 @@ public class SmsPage {
     }
 
     public void verify() throws InterruptedException {
-        sleep(4000);
+        sleep(500);
 
     }
 
