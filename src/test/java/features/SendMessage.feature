@@ -2,7 +2,7 @@ Feature: As a valid and logged user do campaigns, with all possible
   status. Sending of messages of different types (Normal shipping,
   Premium shipping, Flash shipping).
 
-  @SendMessage1
+  @SendMessage
   Scenario Outline: The user do a "Fast Send" with all status
     Given a user logged to Tellit choose a <Option> option
     When the user do a <Fast Send> with <Status> status
@@ -27,14 +27,14 @@ Feature: As a valid and logged user do campaigns, with all possible
     And the user enter values of second step
     And the user goes to the third step
 ##      Paso 3
-    Then el suaurio puede verificar los datos ingresados son correctos
+    Then the user verify data of campaign
 
     Examples:
-      | Option | Source | Type        | archivo | los datos | fuente2 |
-      | SMS    | grupos | Normal SMS  |         |           |         |
-      | SMS    | grupos | Flash SMS   |         |           |         |
+      | Option | Source | Type         | archivo | los datos | fuente2 |
+      | SMS    | grupos | Normal SMS   |         |           |         |
+      | SMS    | grupos | Flash SMS    |         |           |         |
+      | SMS    | grupos | Premium SMS  |         |           |         |
 #      | SMS    | grupos | Attached Doc |         |           |         |
-      | SMS    | grupos | Premium SMS |         |           |         |
 
 
 #  @grupos

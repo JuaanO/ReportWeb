@@ -22,19 +22,19 @@ public class Hooks {
 
     @Before
     public void setUp() throws IOException {
-        numberOfCase ++;
+        numberOfCase++;
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
-        System.out.println("Scenario: " +numberOfCase+ " is running ..");
+        System.out.println("Scenario: " + numberOfCase + " is running ..");
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
         capabilities.setCapability("enableVNC", true);
         URL url = new URL(props.getProperty("url_local"));
-        driver = new RemoteWebDriver(url,capabilities);
+        driver = new RemoteWebDriver(url, capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(props.getProperty("production"));
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(props.getProperty("user"),props.getProperty("password"));
+        loginPage.login(props.getProperty("user"), props.getProperty("password"));
         loginPage.assertionLogin();
         driver.manage().window().maximize();
     }
@@ -48,7 +48,7 @@ public class Hooks {
         driver.quit();
     }
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
         return driver;
     }
 }

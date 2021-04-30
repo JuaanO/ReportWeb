@@ -45,8 +45,8 @@ public class SendMessage extends TestBase {
         smsPage.goToThirdStep();
     }
 
-    @Then("el suaurio puede verificar los datos ingresados son correctos")
-    public void elSuaurioPuedeVerificarLosDatosIngresadosSonCorrectos() throws InterruptedException {
+    @Then("^the user verify data of campaign$")
+    public void serVerifyDataCampaign() throws InterruptedException {
         smsPage.verify();
     }
 
