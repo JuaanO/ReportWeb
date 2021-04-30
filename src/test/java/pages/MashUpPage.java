@@ -1,12 +1,11 @@
 package pages;
 
-
 import helpers.Helpers;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class MainPage {
+public class MashUpPage {
 
     private final WebDriver driver;
     private final By smsButton;
@@ -21,7 +20,7 @@ public class MainPage {
     private final By languageDropDownES;
     private final By languageDropDownEN;
 
-    public MainPage(WebDriver driver){
+    public MashUpPage(WebDriver driver){
         this.driver = driver;
         administratorButton = By.xpath("//h2[normalize-space()='Corporative Administrator.']");
         documentsButton = By.xpath("//h2[contains(text(),'Digitize your extracts, letters')]");
@@ -37,27 +36,27 @@ public class MainPage {
     }
 
     public void chooseOption(String option){
-            assertionMain();
-            switch (option){
-                case "Administrator":
-                    driver.findElement(administratorButton).click();
-                    break;
-                case "Documents":
-                    driver.findElement(documentsButton).click();
-                    break;
-                case "Reports":
-                    driver.findElement(reportButton).click();
-                    break;
-                case "SMS":
-                    driver.findElement(smsButton).click();
-                    break;
-                case "Voice":
-                    driver.findElement(voiceButton).click();
-                    break;
-                case "Email":
-                    driver.findElement(emailButton).click();
-                    break;
-            }
+        assertionMain();
+        switch (option){
+            case "Administrator":
+                driver.findElement(administratorButton).click();
+                break;
+            case "Documents":
+                driver.findElement(documentsButton).click();
+                break;
+            case "Reports":
+                driver.findElement(reportButton).click();
+                break;
+            case "SMS":
+                driver.findElement(smsButton).click();
+                break;
+            case "Voice":
+                driver.findElement(voiceButton).click();
+                break;
+            case "Email":
+                driver.findElement(emailButton).click();
+                break;
+        }
     }
 
     public void downloadReport() {

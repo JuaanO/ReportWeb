@@ -10,7 +10,7 @@ Feature: Review the differents types of campaigns (failed, and successful)
     Then the user only can see records of type <type2> with status <status> in the reports table
 
     Examples:
-      | option  | optionmenu | user     | reference | type  | type2 | status |
+      | option  | optionmenu | user          | reference | type  | type2 | status |
       | Reports | SMS        | juan.estrella | Fast Send | SMS   | SMS   | send   |
-      | Reports | SMS        | juan.estrella | Fast Send | Flash   | Flash   | send   |
+      | Reports | SMS        | juan.estrella | Fast Send | Flash | Flash | send   |
 #
