@@ -56,24 +56,17 @@ public class SmsPage {
                 .sendKeys(props.getProperty("messageValidToSend"));
     }
 
-    public void sendMessage() throws InterruptedException {
+    public void sendMessage() {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-
-//        driver.findElement(processButton).click();
-//        sleep(1000);
-
         wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
-
-//        driver.findElement(sendButton).click();
-//        sleep(1000);
     }
 
     public void chooseMassiveCampaign() {
         driver.findElement(By.xpath("//*[@id='navSendArchive']")).click();
     }
 
-    public void chooseDataSource(String source) throws InterruptedException {
+    public void chooseDataSource(String source) {
 
         if (source.equals("grupos")) {
             driver.findElement(By.xpath("//option[normalize-space()='Groups']")).click();
