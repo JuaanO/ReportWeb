@@ -10,8 +10,8 @@ Feature: As a valid and logged user do campaigns, with all possible
     Examples:
       | Option | Fast Send        | Status  |
       | SMS    | Normal shipping  | valid   |
-      | SMS    | Premium shipping | Invalid |
-      | SMS    | Flash shipping   | Valid   |
+#      | SMS    | Premium shipping | Invalid |
+#      | SMS    | Flash shipping   | Valid   |
 
 
   @SendMessage  @SendMessageMassive
