@@ -1,5 +1,6 @@
 package pages;
 
+import helpers.Helpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -7,7 +8,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
@@ -19,6 +19,7 @@ public class SmsPage {
     private final By closeModal, reportOption, reportSmsOption;
     private final By normalShipping, flashShipping, premiumShipping;
     private final By normalSms, flashSms, docSms, premiumSms;
+    private Object SimpleDateFormat;
 
     public SmsPage(WebDriver driver) {
         this.driver = driver;
@@ -56,10 +57,16 @@ public class SmsPage {
     }
 
     public void sendMessage() throws InterruptedException {
-        driver.findElement(processButton).click();
-        sleep(1000);
-        driver.findElement(sendButton).click();
-        sleep(1000);
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+
+//        driver.findElement(processButton).click();
+//        sleep(1000);
+
+        wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
+
+//        driver.findElement(sendButton).click();
+//        sleep(1000);
     }
 
     public void chooseMassiveCampaign() {
@@ -109,8 +116,8 @@ public class SmsPage {
     }
 
     public void message(String datos) {
-          WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).sendKeys("Texto de prueba");
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).sendKeys("Texto de prueba: " + Helpers.generateDate());
     }
 
     public void goToThirdStep() {
