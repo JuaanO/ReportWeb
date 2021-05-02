@@ -32,6 +32,6 @@ Feature: As a valid and logged user do campaigns, with all possible
     Examples:
       | Option | Source | Type        |
       | SMS    | grupos | Normal SMS  |
-      | SMS    | grupos | Flash SMS   |
-      | SMS    | grupos | Premium SMS |
+#      | SMS    | grupos | Flash SMS   |
+#      | SMS    | grupos | Premium SMS |
 #      | SMS    | grupos | Attached Doc |
