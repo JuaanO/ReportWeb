@@ -27,7 +27,7 @@ public class Hooks {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", "chrome");
         capabilities.setCapability("enableVNC", true);
-        URL url = new URL(props.getProperty("url_local"));
+        URL url = new URL(props.getProperty("url_selenoid"));
         driver = new RemoteWebDriver(url, capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get(props.getProperty("production"));
