@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Helpers {
 
@@ -20,9 +21,9 @@ public class Helpers {
     }
 
     public static String generateDate() {
-        Date objDate = new Date(); // Current System Date and time is assigned to objDate
-        String strDateFormat = "HH:mm:ss dd/MM/yyyy"; //Date format is Specified
-        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); //Date format string is passed as an argument to the Date format object
+        Date objDate = new Date();
+        String strDateFormat = "EEEE MMMM d HH:mm:ss";
+        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat, Locale.UK);
         return objSDF.format(objDate);
     }
 

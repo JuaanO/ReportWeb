@@ -18,8 +18,7 @@ public class SmsPage {
     private final By numberInput, messageInput, processButton, sendButton;
     private final By closeModal, reportOption, reportSmsOption;
     private final By normalShipping, flashShipping, premiumShipping;
-    private final By normalSms, flashSms, docSms, premiumSms;
-    private Object SimpleDateFormat;
+    private final By normalSms, flashSms, docSms, premiumSms, navMassiveCampaign;
 
     public SmsPage(WebDriver driver) {
         this.driver = driver;
@@ -37,6 +36,7 @@ public class SmsPage {
         flashSms = By.xpath("//option[normalize-space()='Flash SMS']");
         docSms = By.xpath("//option[normalize-space()='Attached Doc']");
         premiumSms = By.xpath("//option[@value='7']");
+        navMassiveCampaign = By.xpath("//*[@id='navSendArchive']");
 
     }
 
@@ -63,7 +63,7 @@ public class SmsPage {
     }
 
     public void chooseMassiveCampaign() {
-        driver.findElement(By.xpath("//*[@id='navSendArchive']")).click();
+        driver.findElement(navMassiveCampaign).click();
     }
 
     public void chooseDataSource(String source) {
@@ -102,15 +102,19 @@ public class SmsPage {
         driver.findElement(By.xpath("//button[normalize-space()='Cargar']")).click();
     }
 
-    public void inputChampaignName() {
+    public void inputChampaignName() throws IOException {
+        Properties props = new Properties();
+        props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='campaignNameInput']")))
-                .sendKeys("prueba campana");
+                .sendKeys(props.getProperty("nameForMasiveCampaign"));
     }
 
-    public void message(String datos) {
+    public void message(String datos) throws IOException {
+        Properties props = new Properties();
+        props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).sendKeys("Texto de prueba: " + Helpers.generateDate());
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).sendKeys(props.getProperty("messageForMasiveCampaign") + ": " + Helpers.generateDate());
     }
 
     public void goToThirdStep() {

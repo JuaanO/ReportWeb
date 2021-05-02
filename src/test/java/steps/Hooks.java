@@ -40,20 +40,20 @@ public class Hooks {
     @AfterStep
     public void embedPhotoAfter(Scenario scenario){
         final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        scenario.embed(screenshot, "image/png");
+        scenario.embed(screenshot, "image/jpeg");
     }
 
-    @BeforeStep
-    public void embedPhotoBefore(Scenario scenario){
-        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        scenario.embed(screenshot, "image/png");
-    }
+//    @BeforeStep
+//    public void embedPhotoBefore(Scenario scenario){
+//        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//        scenario.embed(screenshot, "image/png");
+//    }
 
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png");
+            scenario.embed(screenshot, "image/jpeg");
         }
         driver.quit();
     }

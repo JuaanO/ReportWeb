@@ -14,7 +14,7 @@ public class SendMessage extends TestBase {
     }
 
     @And("^the user selects recipient (.*?)$")
-    public void theUserSelectsRecipientSource(String source) throws InterruptedException {
+    public void theUserSelectsRecipientSource(String source) {
         smsPage.chooseDataSource(source);
     }
 
@@ -35,7 +35,7 @@ public class SendMessage extends TestBase {
     }
 
     @And("^the user enter values of second step$")
-    public void enterValuesOfSecondStep() {
+    public void enterValuesOfSecondStep() throws IOException {
         smsPage.inputChampaignName();
         smsPage.message("datos");
     }
@@ -51,12 +51,12 @@ public class SendMessage extends TestBase {
     }
 
     @And("^el usuario ingresa (.*?) del paso 2$")
-    public void elUsuarioIngresaLosDatosDelPaso(String datos) {
+    public void elUsuarioIngresaLosDatosDelPaso(String datos) throws IOException {
         smsPage.message(datos);
     }
 
     @When("^the user do a (.*?) with (.*?) status$")
-    public void theUserOdACampaignWithValidStatus(String type, String status) throws IOException, InterruptedException {
+    public void theUserOdACampaignWithValidStatus(String type, String status) throws IOException {
         smsPage.createMessage(type);
         smsPage.sendMessage();
     }
