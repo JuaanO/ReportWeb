@@ -56,9 +56,10 @@ public class SmsPage {
                 .sendKeys(props.getProperty("messageValidToSend"));
     }
 
-    public void sendMessage() {
+    public void sendMessage() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
+        sleep(800);
         wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
     }
 
