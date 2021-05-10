@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import steps.TestBase;
 import java.io.IOException;
 
+import static java.lang.Thread.sleep;
+
 public class SendMessage extends TestBase {
 
     @When("^the user chooses a massive sms campaign option$")
@@ -14,19 +16,27 @@ public class SendMessage extends TestBase {
     }
 
     @And("^the user selects recipient (.*?)$")
-    public void theUserSelectsRecipientSource(String source) {
+    public void theUserSelectsRecipientSource(String source) throws InterruptedException {
         smsPage.chooseDataSource(source);
+        if(source.equals("grupos")){
+            smsPage.chooseGroup();
+            smsPage.loadGroup();
+        }else {
+            System.out.println("No entro en grupos");
+        }
     }
 
     @And("^the user selects message (.*?)$")
-    public void theUserSelectsMessageType(String type) {
+    public void theUserSelectsMessageType(String type) throws InterruptedException {
         smsPage.chooseTypeMessage(type);
+        sleep(500);
     }
 
     @And("the user chooses group")
     public void userChoosesGroup() {
-        smsPage.chooseGroup();
-        smsPage.loadGroup();
+//        smsPage.chooseGroup();
+//        smsPage.loadGroup();
+        System.out.println("Holi");
     }
 
     @And("the user goes to the second step")

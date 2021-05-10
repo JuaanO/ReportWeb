@@ -3,6 +3,9 @@ package pages;
 import helpers.Helpers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.FileReader;
@@ -67,12 +70,18 @@ public class SmsPage {
         driver.findElement(navMassiveCampaign).click();
     }
 
-    public void chooseDataSource(String source) {
-
+    public void chooseDataSource(String source) throws InterruptedException {
         if (source.equals("grupos")) {
             driver.findElement(By.xpath("//option[normalize-space()='Groups']")).click();
-        } else {
-            driver.findElement(By.xpath(""));
+        } else if (source.equals("archivo")) {
+            WebElement addFile = driver.findElement(By.xpath("//input[@type='file']"));
+            ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
+            addFile.sendKeys("src/test/resources/files/csv/phoneNumbers.csv");
+
+            WebElement selectPhones = driver.findElement(By.xpath("//select[@id='fileGsmColumnSelect']//option[@value='2']"));
+            selectPhones.click();
+        } else  {
+            System.out.println("Source not found!!");
         }
     }
 

@@ -12,5 +12,5 @@ Feature: Review the differents types of campaigns (failed, and successful)
     Examples:
       | option  | optionmenu | user          | reference | type  | type2 | status |
       | Reports | SMS        | juan.estrella | Fast Send | SMS   | SMS   | send   |
-#      | Reports | SMS        | juan.estrella | Fast Send | Flash | Flash | send   |
+      | Reports | SMS        | juan.estrella | Fast Send | Flash | Flash | send   |
 #
