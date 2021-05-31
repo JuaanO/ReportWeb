@@ -76,7 +76,7 @@ public class SmsPage {
         } else if (source.equals("archivo")) {
             WebElement addFile = driver.findElement(By.xpath("//input[@type='file']"));
             ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
-            addFile.sendKeys("src/test/resources/files/csv/phoneNumbers.csv");
+            addFile.sendKeys("src/test/resources/files/csv/fileColombia8001Contacs.csv");
 
             WebElement selectPhones = driver.findElement(By.xpath("//select[@id='fileGsmColumnSelect']//option[@value='2']"));
             selectPhones.click();

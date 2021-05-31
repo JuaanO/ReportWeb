@@ -2,7 +2,7 @@ Feature: As a valid and logged user do campaigns, with all possible
   status. Sending of messages of different types (Normal shipping,
   Premium shipping, Flash shipping).
 
-  @SendMessage
+  @SendMessageFast
   Scenario Outline: The user do a "Fast Send" with all status
     Given a user logged to Tellit choose a <Option> option
     When the user do a <Fast Send> with <Status> status
@@ -14,7 +14,7 @@ Feature: As a valid and logged user do campaigns, with all possible
 #      | SMS    | Flash shipping   | Valid   |
 
 
-  @SendMessageMassive @SendMessage  @SendMessageMassiveGroup
+    @SendMessageMassive @SendMessage  @SendMessageMassiveGroup
   Scenario Outline: The user do a "Massive Campaign" with all posibles status
     Given a user logged to Tellit choose a <Option> option
     When the user chooses a massive sms campaign option
@@ -33,10 +33,10 @@ Feature: As a valid and logged user do campaigns, with all possible
       | Option | Source | Type        |
       | SMS    | grupos | Normal SMS  |
       | SMS    | archivo | Flash SMS   |
-      | SMS    | grupos | Premium SMS |
+#      | SMS    | grupos | Premium SMS |
 #      | SMS    | grupos | Attached Doc |
 
-  @SendMessageMassive @SendMessage  @SendMessageMassiveFile
+  @SendSample
   Scenario Outline: The user do a "Massive Campaign" with all posibles status
     Given a user logged to Tellit choose a <Option> option
     When the user chooses a massive sms campaign option
@@ -51,10 +51,14 @@ Feature: As a valid and logged user do campaigns, with all possible
     And the user goes to the third step
 ##      Paso 3
     Then the user verify data of campaign
+    And the user choose send a sample
+
 
     Examples:
       | Option | Source  | Type        |
       | SMS    | archivo | Normal SMS  |
-      | SMS    | grupos | Flash SMS   |
+#      | SMS    | grupos | Flash SMS   |
 #      | SMS    | archivo | Premium SMS |
 #      | SMS    | grupos | Premium SMS |
+
+

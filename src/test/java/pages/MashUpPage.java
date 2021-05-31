@@ -17,6 +17,7 @@ public class MashUpPage {
     private final By documentsButton;
     private final By voiceButton;
     private final By emailButton;
+    private final By whatsAppButton;
     private final By languageDropDownES;
     private final By languageDropDownEN;
 
@@ -28,6 +29,7 @@ public class MashUpPage {
         smsButton = By.xpath("//h1[contains(text(),'Enhance communications with')]");
         voiceButton = By.xpath("//h1[contains(text(),'Sending the same audio or a')]");
         emailButton = By.xpath("//h1[contains(text(),'Make strategic E-mail Marketing')]");
+        whatsAppButton = By.xpath("//h1[contains(text(),'Ensure effective interaction with your')]");
         languageDropDownEN = By.xpath("//span[normalize-space()='En']");
         languageDropDownES = By.xpath("//span[normalize-space()='Es']");
         notificationButton = By.xpath("/html/body/app-root/div[2]/app-navbar/header/nav/div[3]/div/ul/li[1]/a/span");
@@ -52,6 +54,9 @@ public class MashUpPage {
                 break;
             case "Voice":
                 driver.findElement(voiceButton).click();
+                break;
+            case "Whatsapp":
+                driver.findElement(whatsAppButton).click();
                 break;
             case "Email":
                 driver.findElement(emailButton).click();

@@ -3,12 +3,17 @@ package steps.Sms;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.TestBase;
 import java.io.IOException;
 
 import static java.lang.Thread.sleep;
 
 public class SendMessage extends TestBase {
+
+    private static final long TIMEOUT = 5;
 
     @When("^the user chooses a massive sms campaign option$")
     public void theUserChoosesAMassiveSmsCampaignOption() {
@@ -69,5 +74,17 @@ public class SendMessage extends TestBase {
     public void theUserOdACampaignWithValidStatus(String type, String status) throws IOException, InterruptedException {
         smsPage.createMessage(type);
         smsPage.sendMessage();
+    }
+
+    @And("^the user choose send a sample$")
+    public void theUserChooseSendASample() {
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='goToSample']")))
+                .click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='typeSample']/option[2]")))
+                .click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='receiverSMSSample']")))
+                .sendKeys("400");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='goToSendSamples']"))).click();
     }
 }
