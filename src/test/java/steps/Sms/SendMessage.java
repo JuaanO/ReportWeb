@@ -72,7 +72,7 @@ public class SendMessage extends TestBase {
 
     @When("^the user do a (.*?) with (.*?) status$")
     public void theUserOdACampaignWithValidStatus(String type, String status) throws IOException, InterruptedException {
-        smsPage.createMessage(type);
+        smsPage.createMessage(type, status);
         smsPage.sendMessage();
     }
 

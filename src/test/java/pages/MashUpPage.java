@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.Locale;
+
 public class MashUpPage {
 
     private final WebDriver driver;
@@ -39,26 +41,26 @@ public class MashUpPage {
 
     public void chooseOption(String option){
         assertionMain();
-        switch (option){
-            case "Administrator":
+        switch (option.toLowerCase(Locale.ROOT).trim()){
+            case "administrator":
                 driver.findElement(administratorButton).click();
                 break;
-            case "Documents":
+            case "documents":
                 driver.findElement(documentsButton).click();
                 break;
-            case "Reports":
+            case "reports":
                 driver.findElement(reportButton).click();
                 break;
-            case "SMS":
+            case "sms":
                 driver.findElement(smsButton).click();
                 break;
-            case "Voice":
+            case "voice":
                 driver.findElement(voiceButton).click();
                 break;
-            case "Whatsapp":
+            case "whatsapp":
                 driver.findElement(whatsAppButton).click();
                 break;
-            case "Email":
+            case "email":
                 driver.findElement(emailButton).click();
                 break;
         }

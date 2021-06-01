@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Properties;
 
 import static java.lang.Thread.sleep;
@@ -43,18 +44,24 @@ public class SmsPage {
 
     }
 
-    public void inputNumber() throws IOException {
+    public void inputNumber(String status) throws IOException {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(numberInput))
-                .sendKeys(props.getProperty("ValidNumber"));
+        if(status.equals("valid")){
+            wait.until(ExpectedConditions.elementToBeClickable(numberInput))
+                    .sendKeys(props.getProperty("ValidNumber"));
+        } else if (status.equals("invalid")) {
+            wait.until(ExpectedConditions.elementToBeClickable(numberInput))
+                    .sendKeys(props.getProperty("InvalidNumber"));
+        }
     }
 
-    public void inputMessage() throws IOException {
+    public void inputMessage() throws IOException, InterruptedException  {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(messageInput))
                 .sendKeys(props.getProperty("messageValidToSend"));
     }
@@ -62,7 +69,7 @@ public class SmsPage {
     public void sendMessage() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
-        sleep(800);
+        sleep(1000);
         wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
     }
 
@@ -138,22 +145,23 @@ public class SmsPage {
 
     }
 
-    public void createMessage(String type) throws IOException {
-        switch (type) {
-            case "Normal shipping":
+    public void createMessage(String type, String status) throws IOException , InterruptedException{
+
+        switch (type.toLowerCase(Locale.ROOT).trim()) {
+            case "normal shipping":
                 driver.findElement(normalShipping).click();
                 inputMessage();
-                inputNumber();
+                inputNumber(status.toLowerCase(Locale.ROOT).trim());
                 break;
-            case "Premium shipping":
+            case "premium shipping":
                 driver.findElement(flashShipping).click();
                 inputMessage();
-                inputNumber();
+                inputNumber(status.toLowerCase(Locale.ROOT).trim());
                 break;
-            case "Flash shipping":
+            case "flash shipping":
                 driver.findElement(premiumShipping).click();
                 inputMessage();
-                inputNumber();
+                inputNumber(status.toLowerCase(Locale.ROOT).trim());
                 break;
         }
     }
