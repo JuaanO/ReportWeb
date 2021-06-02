@@ -4,10 +4,14 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.TestBase;
 import java.io.IOException;
+import java.util.Locale;
 
 import static java.lang.Thread.sleep;
 
@@ -20,14 +24,18 @@ public class SendMessage extends TestBase {
         smsPage.chooseMassiveCampaign();
     }
 
-    @And("^the user selects recipient (.*?)$")
+    @And("^the user selects and chooses recipient (.*?)$")
     public void theUserSelectsRecipientSource(String source) throws InterruptedException {
-        smsPage.chooseDataSource(source);
-        if(source.equals("grupos")){
+        if(source.toLowerCase(Locale.ROOT).trim().equals("grupos")){
+            smsPage.chooseDataSource();
             smsPage.chooseGroup();
             smsPage.loadGroup();
-        }else {
-            System.out.println("No entro en grupos");
+        } else if (source.toLowerCase(Locale.ROOT).trim().equals("archivo")){
+            WebElement addFile = driver.findElement(By.xpath("//input[@type='file']"));
+            ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
+            addFile.sendKeys("src/test/resources/files/csv/fileColombia8001Contacs.csv");
+            WebElement selectPhones = driver.findElement(By.xpath("//select[@id='fileGsmColumnSelect']//option[@value='2']"));
+            selectPhones.click();
         }
     }
 
@@ -37,22 +45,15 @@ public class SendMessage extends TestBase {
         sleep(500);
     }
 
-    @And("the user chooses group")
-    public void userChoosesGroup() {
-//        smsPage.chooseGroup();
-//        smsPage.loadGroup();
-        System.out.println("Holi");
-    }
-
     @And("the user goes to the second step")
     public void userGoSecondStep() {
         smsPage.goSecondStep();
     }
 
-    @And("^the user enter values of second step$")
+    @And("^the user enters name and message for the campaign$")
     public void enterValuesOfSecondStep() throws IOException {
         smsPage.inputChampaignName();
-        smsPage.message("datos");
+        smsPage.message();
     }
 
     @And("^the user goes to the third step")
@@ -63,11 +64,6 @@ public class SendMessage extends TestBase {
     @Then("^the user verify data of campaign$")
     public void serVerifyDataCampaign() throws InterruptedException {
         smsPage.verify();
-    }
-
-    @And("^el usuario ingresa (.*?) del paso 2$")
-    public void elUsuarioIngresaLosDatosDelPaso(String datos) throws IOException {
-        smsPage.message(datos);
     }
 
     @When("^the user do a (.*?) with (.*?) status$")

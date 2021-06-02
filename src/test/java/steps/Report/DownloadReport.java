@@ -6,12 +6,6 @@ import steps.TestBase;
 
 public class DownloadReport extends TestBase {
 
-//    @When("^the user do a (.*?) campain$")
-//    public void theUserDoA(String campainType) throws Throwable {
-//        smsPage.createMessage(campainType);
-//        smsPage.sendMessage();
-//    }
-
     @When("^the user fill the form$")
     public void theUserFillTheForm() {
         detailedReportPage.assertionReportPage();

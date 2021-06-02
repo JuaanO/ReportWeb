@@ -22,7 +22,7 @@ public class SmsPage {
     private final By numberInput, messageInput, processButton, sendButton;
     private final By closeModal, reportOption, reportSmsOption;
     private final By normalShipping, flashShipping, premiumShipping;
-    private final By normalSms, flashSms, docSms, premiumSms, navMassiveCampaign;
+    private final By normalSms, flashSms, docSms, premiumSms, rcsSms, navMassiveCampaign;
 
     public SmsPage(WebDriver driver) {
         this.driver = driver;
@@ -39,6 +39,7 @@ public class SmsPage {
         normalSms = By.xpath("//option[normalize-space()='Normal SMS']");
         flashSms = By.xpath("//option[normalize-space()='Flash SMS']");
         docSms = By.xpath("//option[normalize-space()='Attached Doc']");
+        rcsSms = By.xpath("//option[normalize-space()='RCS']");
         premiumSms = By.xpath("//option[@value='7']");
         navMassiveCampaign = By.xpath("//*[@id='navSendArchive']");
 
@@ -77,34 +78,26 @@ public class SmsPage {
         driver.findElement(navMassiveCampaign).click();
     }
 
-    public void chooseDataSource(String source) throws InterruptedException {
-        if (source.equals("grupos")) {
-            driver.findElement(By.xpath("//option[normalize-space()='Groups']")).click();
-        } else if (source.equals("archivo")) {
-            WebElement addFile = driver.findElement(By.xpath("//input[@type='file']"));
-            ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
-            addFile.sendKeys("src/test/resources/files/csv/fileColombia8001Contacs.csv");
-
-            WebElement selectPhones = driver.findElement(By.xpath("//select[@id='fileGsmColumnSelect']//option[@value='2']"));
-            selectPhones.click();
-        } else  {
-            System.out.println("Source not found!!");
-        }
+    public void chooseDataSource() {
+        driver.findElement(By.xpath("//option[normalize-space()='Groups']")).click();
     }
 
     public void chooseTypeMessage(String type) {
-        switch (type) {
-            case "Normal SMS":
+        switch (type.toLowerCase(Locale.ROOT).trim()) {
+            case "normal sms":
                 driver.findElement(normalSms).click();
                 break;
-            case "Flash SMS":
+            case "flash sms":
                 driver.findElement(flashSms).click();
                 break;
-            case "Attached Doc":
+            case "attached doc":
                 driver.findElement(docSms).click();
                 break;
-            case "Premium SMS":
+            case "premium sms":
                 driver.findElement(premiumSms).click();
+                break;
+            case "rcs":
+                driver.findElement(rcsSms).click();
                 break;
         }
     }
@@ -127,11 +120,12 @@ public class SmsPage {
                 .sendKeys(props.getProperty("nameForMasiveCampaign"));
     }
 
-    public void message(String datos) throws IOException {
+    public void message() throws IOException {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).sendKeys(props.getProperty("messageForMasiveCampaign") + ": " + Helpers.generateDate());
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).
+                sendKeys(props.getProperty("messageForMasiveCampaign") + ": " + Helpers.generateDate());
     }
 
     public void goToThirdStep() {
