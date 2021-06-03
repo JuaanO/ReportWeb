@@ -19,9 +19,12 @@ public class SmsPage {
 
     private final WebDriver driver;
     private final int TIMEOUT = 30;
-    private final By numberInput, messageInput, processButton, sendButton;
+    private final By numberInput, messageInput, processButton, sendButton, sendSampleButton;
     private final By closeModal, reportOption, reportSmsOption;
-    private final By normalShipping, flashShipping, premiumShipping;
+    private final By nextTwoStepButton, nextSecondStepButton, selectFileCombobox, columnGsmCombobox;
+    private final By openModalButton, selectTypeSampleCombobox, selectNumberToSendInput;
+    private final By groupElemnt, loadGroupButton, nameCampaignInput, contentCampaignInput;
+    private final By normalShipping, flashShipping, premiumShipping, groupCombobox;
     private final By normalSms, flashSms, docSms, premiumSms, rcsSms, navMassiveCampaign;
 
     public SmsPage(WebDriver driver) {
@@ -34,6 +37,19 @@ public class SmsPage {
         reportOption = By.xpath("//a[@data-target='#Reportes']");
         reportSmsOption = By.xpath("//ul[@id='Reportes']//li[2]//a[1]");
         normalShipping = By.xpath("//label[normalize-space()='Normal shipping']");
+        groupCombobox = By.xpath("//option[normalize-space()='Groups']");
+        groupElemnt = By.xpath("//label[@for='exampleCheck1']");
+        nameCampaignInput = By.xpath("//input[@id='campaignNameInput']");
+        loadGroupButton = By.xpath("//button[normalize-space()='Cargar']");
+        contentCampaignInput = By.xpath("//*[@id='campaignContent']");
+        nextTwoStepButton = By.xpath("//*[@id='stepTwoNextBtn']");
+        selectFileCombobox = By.xpath("//input[@type='file']");
+        columnGsmCombobox = By.xpath("//select[@id='fileGsmColumnSelect']//option[@value='2']");
+        nextSecondStepButton = By.xpath("//button[normalize-space()='Next']");
+        openModalButton = By.xpath("//*[@id='goToSample']");
+        selectNumberToSendInput = By.xpath("//*[@id='receiverSMSSample']");
+        selectTypeSampleCombobox = By.xpath("//*[@id='typeSample']/option[2]");
+        sendSampleButton = By.xpath("//*[@id='goToSendSamples']");
         flashShipping = By.xpath("//label[normalize-space()='Flash shipping']");
         premiumShipping = By.xpath("//label[normalize-space()='Premium shipping']");
         normalSms = By.xpath("//option[normalize-space()='Normal SMS']");
@@ -79,44 +95,47 @@ public class SmsPage {
     }
 
     public void chooseDataSource() {
-        driver.findElement(By.xpath("//option[normalize-space()='Groups']")).click();
+        driver.findElement(groupCombobox).click();
     }
 
-    public void chooseTypeMessage(String type) {
+    public void chooseTypeMessage(String type) throws InterruptedException  {
         switch (type.toLowerCase(Locale.ROOT).trim()) {
             case "normal sms":
                 driver.findElement(normalSms).click();
+                sleep(500);
                 break;
             case "flash sms":
                 driver.findElement(flashSms).click();
+                sleep(500);
                 break;
             case "attached doc":
                 driver.findElement(docSms).click();
+                sleep(500);
                 break;
             case "premium sms":
                 driver.findElement(premiumSms).click();
+                sleep(500);
                 break;
             case "rcs":
                 driver.findElement(rcsSms).click();
+                sleep(500);
                 break;
         }
     }
 
     public void chooseGroup() {
-
-        driver.findElement(By.xpath("//label[@for='exampleCheck1']")).click();
+        driver.findElement(groupElemnt).click();
     }
 
     public void loadGroup() {
-
-        driver.findElement(By.xpath("//button[normalize-space()='Cargar']")).click();
+        driver.findElement(loadGroupButton).click();
     }
 
     public void inputChampaignName() throws IOException {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='campaignNameInput']")))
+        wait.until(ExpectedConditions.elementToBeClickable(nameCampaignInput))
                 .sendKeys(props.getProperty("nameForMasiveCampaign"));
     }
 
@@ -124,19 +143,19 @@ public class SmsPage {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='campaignContent']"))).
+        wait.until(ExpectedConditions.elementToBeClickable(contentCampaignInput)).
                 sendKeys(props.getProperty("messageForMasiveCampaign") + ": " + Helpers.generateDate());
     }
 
     public void goToThirdStep() {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='stepTwoNextBtn']")))
+        wait.until(ExpectedConditions.elementToBeClickable(nextTwoStepButton))
                 .click();
     }
 
     public void verify() throws InterruptedException {
         sleep(500);
-
+        //TENGO QUE HACRE AUN LA VALIDACION DE LA INFORMACION !!
     }
 
     public void createMessage(String type, String status) throws IOException , InterruptedException{
@@ -162,7 +181,31 @@ public class SmsPage {
 
     public void goSecondStep() {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Next']")))
+        wait.until(ExpectedConditions.elementToBeClickable(nextSecondStepButton))
                 .click();
+    }
+
+    public void loadFile() throws IOException {
+        Properties props = new Properties();
+        props.load(new FileReader("src/test/resources/config.properties"));
+        WebElement addFile = driver.findElement(selectFileCombobox);
+        ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
+        addFile.sendKeys(props.getProperty("pathForFileCSV"));
+    }
+
+    public void chooseFileGsmColumn() {
+        WebElement selectPhones = driver.findElement(columnGsmCombobox);
+        selectPhones.click();
+    }
+
+    public void sendSample() {
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(ExpectedConditions.elementToBeClickable(openModalButton))
+                .click();
+        wait.until(ExpectedConditions.elementToBeClickable(selectTypeSampleCombobox))
+                .click();
+        wait.until(ExpectedConditions.elementToBeClickable(selectNumberToSendInput))
+                .sendKeys("400");
+        wait.until(ExpectedConditions.elementToBeClickable(sendSampleButton)).click();
     }
 }

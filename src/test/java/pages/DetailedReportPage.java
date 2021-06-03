@@ -11,7 +11,7 @@ import static java.lang.Thread.sleep;
 
 public class DetailedReportPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
     private final By userDropDownButton, userDropUpButton, selectAllCheck;
     private final By searchInputName, selectNameOption, referenceIntput;
     private final By menuButton, typeDropDownButton, typeDropUpButton;

@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/java/features",
         glue = "steps",
-        plugin = { "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+        plugin = { "pretty" ,"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
                 "json:target/report/cucumber/cucumber.json",
                 "html:target/report/cucumber/cucumber.html"},
         snippets = CucumberOptions.SnippetType.CAMELCASE

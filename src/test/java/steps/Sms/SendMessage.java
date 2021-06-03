@@ -3,84 +3,63 @@ package steps.Sms;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.LocalFileDetector;
-import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.TestBase;
 import java.io.IOException;
 import java.util.Locale;
 
-import static java.lang.Thread.sleep;
-
 public class SendMessage extends TestBase {
 
-    private static final long TIMEOUT = 5;
-
-    @When("^the user chooses a massive sms campaign option$")
+    @When("^chooses a massive sms campaign option$")
     public void theUserChoosesAMassiveSmsCampaignOption() {
         smsPage.chooseMassiveCampaign();
     }
 
-    @And("^the user selects and chooses recipient (.*?)$")
-    public void theUserSelectsRecipientSource(String source) throws InterruptedException {
-        if(source.toLowerCase(Locale.ROOT).trim().equals("grupos")){
+    @And("^selects and chooses recipient (.*?)$")
+    public void theUserSelectsRecipientSource(String source) throws IOException {
+        if(source.toLowerCase(Locale.ROOT).trim().contains("group")){
             smsPage.chooseDataSource();
             smsPage.chooseGroup();
             smsPage.loadGroup();
-        } else if (source.toLowerCase(Locale.ROOT).trim().equals("archivo")){
-            WebElement addFile = driver.findElement(By.xpath("//input[@type='file']"));
-            ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
-            addFile.sendKeys("src/test/resources/files/csv/fileColombia8001Contacs.csv");
-            WebElement selectPhones = driver.findElement(By.xpath("//select[@id='fileGsmColumnSelect']//option[@value='2']"));
-            selectPhones.click();
+        } else if (source.toLowerCase(Locale.ROOT).trim().contains("file")){
+            smsPage.loadFile();
+            smsPage.chooseFileGsmColumn();
         }
     }
 
-    @And("^the user selects message (.*?)$")
+    @And("^selects a message (.*?)$")
     public void theUserSelectsMessageType(String type) throws InterruptedException {
         smsPage.chooseTypeMessage(type);
-        sleep(500);
     }
 
-    @And("the user goes to the second step")
+    @And("goes to the second step")
     public void userGoSecondStep() {
         smsPage.goSecondStep();
     }
 
-    @And("^the user enters name and message for the campaign$")
+    @Then("^enters name and message for the campaign$")
     public void enterValuesOfSecondStep() throws IOException {
         smsPage.inputChampaignName();
         smsPage.message();
     }
 
-    @And("^the user goes to the third step")
+    @And("^goes to the third step$")
     public void userGoToThirdStep() {
         smsPage.goToThirdStep();
     }
 
-    @Then("^the user verify data of campaign$")
-    public void serVerifyDataCampaign() throws InterruptedException {
+    @Then("^verify data of campaign$")
+    public void theUserVerifyDataCampaign() throws InterruptedException {
         smsPage.verify();
     }
 
-    @When("^the user do a (.*?) with (.*?) status$")
+    @When("^do a (.*?) with (.*?) status$")
     public void theUserOdACampaignWithValidStatus(String type, String status) throws IOException, InterruptedException {
         smsPage.createMessage(type, status);
         smsPage.sendMessage();
     }
 
-    @And("^the user choose send a sample$")
+    @And("^send a sample campaign$")
     public void theUserChooseSendASample() {
-        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='goToSample']")))
-                .click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='typeSample']/option[2]")))
-                .click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='receiverSMSSample']")))
-                .sendKeys("400");
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='goToSendSamples']"))).click();
+        smsPage.sendSample();
     }
 }

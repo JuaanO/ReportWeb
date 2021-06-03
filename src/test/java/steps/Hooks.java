@@ -37,11 +37,11 @@ public class Hooks {
         driver.manage().window().maximize();
     }
 
-    @AfterStep
-    public void embedPhotoAfter(Scenario scenario){
-        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-        scenario.embed(screenshot, "image/jpeg");
-    }
+//    @AfterStep
+//    public void embedPhotoAfter(Scenario scenario){
+//        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//        scenario.embed(screenshot, "image/jpeg");
+//    }
 
 //    @BeforeStep
 //    public void embedPhotoBefore(Scenario scenario){

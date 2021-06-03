@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
     private final By userField;
     private final By passwordField;

@@ -18,6 +18,5 @@ public class SendMessage extends TestBase {
         driver.findElement(By.xpath("//button[@id='buttonProcess']")).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Send']")))
                 .click();
-
     }
 }
