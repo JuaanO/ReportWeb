@@ -7,6 +7,8 @@ import steps.TestBase;
 import java.io.IOException;
 import java.util.Locale;
 
+import static java.lang.Thread.sleep;
+
 public class SendMessage extends TestBase {
 
     @When("^chooses a massive sms campaign option$")
@@ -15,8 +17,9 @@ public class SendMessage extends TestBase {
     }
 
     @And("^selects and chooses recipient (.*?)$")
-    public void theUserSelectsRecipientSource(String source) throws IOException {
+    public void theUserSelectsRecipientSource(String source) throws IOException, InterruptedException {
         if(source.toLowerCase(Locale.ROOT).trim().contains("group")){
+            sleep(1000);
             smsPage.chooseDataSource();
             smsPage.chooseGroup();
             smsPage.loadGroup();
@@ -32,8 +35,10 @@ public class SendMessage extends TestBase {
     }
 
     @And("goes to the second step")
-    public void userGoSecondStep() {
+    public void userGoSecondStep() throws IOException, InterruptedException  {
+
         smsPage.goSecondStep();
+        sleep(5000);
     }
 
     @Then("^enters name and message for the campaign$")

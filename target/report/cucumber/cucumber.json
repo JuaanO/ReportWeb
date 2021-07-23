@@ -1,0 +1,147 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2021-07-23T20:58:16.971Z",
+        "before": [
+          {
+            "result": {
+              "duration": 21953000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 29,
+        "name": "The user do a \"Masive campaing\" with all status",
+        "description": "",
+        "id": "as-a-valid-and-logged-user-do-campaigns--with-all-possible;the-user-do-a-\"masive-campaing\"-with-all-status;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 94000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 306000000,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "a user logged to Tellit choose a Whatsapp option",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Whatsapp",
+                  "offset": 33
+                }
+              ],
+              "location": "steps.Mashup.mashUp.aUserLoggedToTellitChooseAnOption(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6277000000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "chooses a massive whatsapp campaign option",
+            "match": {
+              "location": "steps.WhatsApp.SendMessage.theUserChoosesAMassiveSmsCampaignOption()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 1770000000,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "Selects and chooses recipient group de ws",
+            "match": {
+              "arguments": [
+                {
+                  "val": "group",
+                  "offset": 30
+                }
+              ],
+              "location": "steps.WhatsApp.SendMessage.theUserSelectsRecipientSource(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 113000000,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "selectc template",
+            "match": {
+              "location": "steps.WhatsApp.SendMessage.selectcTemplate()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 6123000000,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "goes to the second step",
+            "match": {
+              "location": "steps.Sms.SendMessage.userGoSecondStep()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 387000000,
+              "status": "passed"
+            },
+            "line": 24,
+            "name": "input a name for campaing",
+            "match": {
+              "location": "steps.WhatsApp.SendMessage.inputANameForCampaing()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5173000000,
+              "status": "passed"
+            },
+            "line": 25,
+            "name": "goes to the third step en WS",
+            "match": {
+              "location": "steps.WhatsApp.SendMessage.iratercer()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WS1"
+          }
+        ]
+      }
+    ],
+    "name": "As a valid and logged user do campaigns, with all possible",
+    "description": "  status. Sending of messages of different types (Normal shipping,\n  Premium shipping, Flash shipping).",
+    "id": "as-a-valid-and-logged-user-do-campaigns--with-all-possible",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/features/SendMessageWhatsApp.feature",
+    "tags": []
+  }
+]

@@ -10,4 +10,5 @@ public class TestBase {
     protected DetailedReportPage detailedReportPage = new DetailedReportPage(driver);
     protected smsReportPage smsReportPage = new smsReportPage(driver);
     protected MashUpPage mashUpPage = new MashUpPage(driver);
+    protected WhatsAppPage whatsAppPage = new WhatsAppPage(driver);
 }

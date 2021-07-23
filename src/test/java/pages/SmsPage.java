@@ -40,7 +40,7 @@ public class SmsPage {
         groupCombobox = By.xpath("//option[normalize-space()='Groups']");
         groupElemnt = By.xpath("//label[@for='exampleCheck1']");
         nameCampaignInput = By.xpath("//input[@id='campaignNameInput']");
-        loadGroupButton = By.xpath("//button[normalize-space()='Cargar']");
+        loadGroupButton = By.xpath("//*[@id='loadAddreseesByGroup']");
         contentCampaignInput = By.xpath("//*[@id='campaignContent']");
         nextTwoStepButton = By.xpath("//*[@id='stepTwoNextBtn']");
         selectFileCombobox = By.xpath("//input[@type='file']");
