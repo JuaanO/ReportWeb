@@ -2,6 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,6 +23,8 @@ public class WhatsAppPage {
     private final By nameCampaignInput;
     private final By nextTwoStepButton;
 
+    private final By selectFileCombobox;
+
 
     public WhatsAppPage(WebDriver driver) {
         this.driver = driver;
@@ -29,6 +34,8 @@ public class WhatsAppPage {
         loadGroupButton = By.xpath("//*[@id='loadAddreseesByGroup']");
         nameCampaignInput = By.xpath("//input[@id='campaignNameInput']");
         nextTwoStepButton = By.xpath("//*[@id='stepOneNextBtn']");
+        selectFileCombobox = By.xpath("//input[@type='file']");
+
 
 
 
@@ -52,11 +59,22 @@ public class WhatsAppPage {
         driver.findElement(loadGroupButton).click();
     }
 
-    public void loadFile() {
+    public void loadFile()  throws IOException{
+        Properties props = new Properties();
+        props.load(new FileReader("src/test/resources/config.properties"));
+        WebElement addFile = driver.findElement(selectFileCombobox);
+        ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
+        addFile.sendKeys(props.getProperty("pathForFileCSV"));
+
     }
 
     public void chooseFileGsmColumn() {
+
+        driver.findElement(By.xpath("//div[@class='ng-star-inserted']//div[1]//div[1]//select[1]//option[3]")).click();
+        driver.findElement(By.xpath("//div[@class='ng-star-inserted']//div[2]//div[1]//select[1]//option[4]")).click();
+
     }
+
     public void inputANameForCampaing() throws IOException {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));

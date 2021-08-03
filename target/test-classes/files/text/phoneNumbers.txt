@@ -1,2 +1,0 @@
-nombre,email,celular,direccion
-Juan Jose Estrella M,juan.estrella@aldeamo.com,987288333,Av. Wilson & Reina Victoria

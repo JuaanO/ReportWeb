@@ -41,6 +41,7 @@ public class SendMessage extends TestBase {
             whatsAppPage.chooseGroup();
             whatsAppPage.loadGroup();
         } else if (source.toLowerCase(Locale.ROOT).trim().contains("file")){
+
             whatsAppPage.loadFile();
             whatsAppPage.chooseFileGsmColumn();
         }
