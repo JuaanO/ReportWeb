@@ -11,7 +11,7 @@ Feature: As a valid and logged user do campaigns, with all possible
     Examples:
       | option | fast send        | status  |
       | sMs    | normal shipping  | VaLiD   |
-#      | Sms    | PREMIUM shipping | INVALID |
+#      | Sms    | PREMIUM shipping | VaLiD |
 #      | SMS    | Flash shipping   | INvalid |
 
   @lowPriority @SendMassiveCampaign
