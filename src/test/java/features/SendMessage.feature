@@ -11,8 +11,8 @@ Feature: As a valid and logged user do campaigns, with all possible
     Examples:
       | option | fast send        | status  |
       | sMs    | normal shipping  | VaLiD   |
-#      | Sms    | PREMIUM shipping | VaLiD |
-#      | SMS    | Flash shipping   | INvalid |
+      | Sms    | PREMIUM shipping | VaLiD |
+      | SMS    | Flash shipping   | INvalid |
 
   @lowPriority @SendMassiveCampaign
   Scenario Outline: The user do a "Massive Campaign" with all posibles status
@@ -29,7 +29,7 @@ Feature: As a valid and logged user do campaigns, with all possible
     Examples:
       | option | source  | type        |
       | Sms    | groUps  | Normal SMS  |
-      | sms    | FilE | FLASH sms   |
+      | Sms    | FilE | FLASH sms   |
       | sms    | FILE | FLASH sms   |
       | smS    | grouP | PreMiuM SMS |
       | smS    | grouPs | PreMiuM SMS |
