@@ -78,7 +78,7 @@ public class SmsPage {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
-        sleep(1000);
+        sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable(messageInput))
                 .sendKeys(props.getProperty("messageValidToSend"));
     }
@@ -86,7 +86,7 @@ public class SmsPage {
     public void sendMessage() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
-        sleep(1000);
+        sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
     }
 

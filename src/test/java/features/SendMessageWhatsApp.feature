@@ -28,8 +28,8 @@ Feature: As a valid and logged user do campaigns, with all possible
       | Option | Fast Send       | source |
       | Whatsapp    | Normal shipping | file  |
       | Whatsapp    | Normal shipping | group  |
-      | Whatsapp    | Normal shipping | file  |
-      | Whatsapp    | Normal shipping | file  |
-      | SMS    | Premium shipping | Invalid |
-      | SMS    | Flash shipping   | Valid   |
+#      | Whatsapp    | Normal shipping | file  |
+#      | Whatsapp    | Normal shipping | file  |
+#      | SMS    | Premium shipping | Invalid |
+#      | SMS    | Flash shipping   | Valid   |
 

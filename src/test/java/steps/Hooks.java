@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.UnreachableBrowserException;
@@ -16,12 +17,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
+import java.util.prefs.Preferences;
 
 public class Hooks {
 
     private static WebDriver driver;
     private static int numberOfCase = 0;
-    private static String BROWSER = "firefox";
+    private static String BROWSER = "chrome";
 
     @Before
     public void setUp() throws IOException {
@@ -53,6 +55,7 @@ public class Hooks {
                 FirefoxProfile profile = new FirefoxProfile();
                 FirefoxOptions options = new FirefoxOptions();
                 profile.setPreference("intl.accept_languages", "en-GB");
+                options.setCapability("Marionette", false);
                 options.setProfile(profile);
                 driver = new FirefoxDriver(options);
                 Capabilities.initLocal(driver);

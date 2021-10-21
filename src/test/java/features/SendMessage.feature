@@ -32,6 +32,7 @@ Feature: As a valid and logged user do campaigns, with all possible
       | Sms    | FilE | FLASH sms   |
       | sms    | FILE | FLASH sms   |
       | smS    | grouP | PreMiuM SMS |
-      | smS    | grouPs | PreMiuM SMS |
-      | SMS    | grupos | Attached Doc |
-      | SMS    | grupos  | rCs         |
+#      | SMS    | grupos | Attached Doc |
+#      | SMS    | grupos  | rCs         |
+#
+#
