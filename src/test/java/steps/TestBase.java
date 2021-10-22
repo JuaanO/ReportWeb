@@ -11,4 +11,5 @@ public class TestBase {
     protected smsReportPage smsReportPage = new smsReportPage(driver);
     protected MashUpPage mashUpPage = new MashUpPage(driver);
     protected WhatsAppPage whatsAppPage = new WhatsAppPage(driver);
+    protected VoicePage voicePage = new VoicePage(driver);
 }

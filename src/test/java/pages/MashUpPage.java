@@ -29,7 +29,7 @@ public class MashUpPage {
         documentsButton = By.xpath("//h2[contains(text(),'Digitize your extracts, letters')]");
         reportButton = By.xpath("//h2[contains(text(),'Sent campaign report with')]");
         smsButton = By.xpath("//h1[contains(text(),'Enhance communications with')]");
-        voiceButton = By.xpath("//h1[contains(text(),'Sending the same audio or a')]");
+        voiceButton = By.xpath("//h2[contains(text(),'Sending the same audio or a')]");
         emailButton = By.xpath("//h1[contains(text(),'Make strategic E-mail Marketing')]");
         whatsAppButton = By.xpath("//h1[contains(text(),'Ensure effective interaction with your')]");
         languageDropDownEN = By.xpath("//span[normalize-space()='En']");

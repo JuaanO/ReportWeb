@@ -1,0 +1,49 @@
+http-outgoing-1 << "HTTP/1.1 200 OK[\r][\n]"
+http-outgoing-1 << "Content-Length:14[\r][\n]"
+http-outgoing-1 << "Content-Type:application/json; charset=utf-8[\r][\n]"
+http-outgoing-1 << "cache-control:no-cache[\r][\n]"
+http-outgoing-1 << "[\r][\n]"
+http-outgoing-1 << "{"value":true}"
+http-outgoing-1 << HTTP/1.1 200 OK
+http-outgoing-1 << Content-Length:14
+http-outgoing-1 << Content-Type:application/json; charset=utf-8
+http-outgoing-1 << cache-control:no-cache
+Connection can be kept alive indefinitely
+Connection [id: 1][route: {}->http://localhost:10174] can be kept alive indefinitely
+Connection released: [id: 1][route: {}->http://localhost:10174][total kept alive: 1; route allocated: 1 of 2000; total allocated: 1 of 2000]
+CookieSpec selected: default
+Auth cache not set in the context
+Connection request: [route: {}->http://localhost:10174][total kept alive: 1; route allocated: 1 of 2000; total allocated: 1 of 2000]
+Connection leased: [id: 1][route: {}->http://localhost:10174][total kept alive: 0; route allocated: 1 of 2000; total allocated: 1 of 2000]
+Stale connection check
+http-outgoing-1 << "[read] I/O error: Read timed out"
+http-outgoing-1: set socket timeout to 10800000
+Executing request GET /session/776e245f95d01f3023c8a2a8306d84c8/element/4b4c8af7-1fb1-402f-b95b-86e011e393fd/enabled HTTP/1.1
+Target auth state: UNCHALLENGED
+Proxy auth state: UNCHALLENGED
+http-outgoing-1 >> GET /session/776e245f95d01f3023c8a2a8306d84c8/element/4b4c8af7-1fb1-402f-b95b-86e011e393fd/enabled HTTP/1.1
+http-outgoing-1 >> Cache-Control: no-cache
+http-outgoing-1 >> Host: localhost:10174
+http-outgoing-1 >> Connection: Keep-Alive
+http-outgoing-1 >> User-Agent: Apache-HttpClient/4.5.3 (Java/1.8.0_301)
+http-outgoing-1 >> Accept-Encoding: gzip,deflate
+http-outgoing-1 >> "GET /session/776e245f95d01f3023c8a2a8306d84c8/element/4b4c8af7-1fb1-402f-b95b-86e011e393fd/enabled HTTP/1.1[\r][\n]"
+http-outgoing-1 >> "Cache-Control: no-cache[\r][\n]"
+http-outgoing-1 >> "Host: localhost:10174[\r][\n]"
+http-outgoing-1 >> "Connection: Keep-Alive[\r][\n]"
+http-outgoing-1 >> "User-Agent: Apache-HttpClient/4.5.3 (Java/1.8.0_301)[\r][\n]"
+http-outgoing-1 >> "Accept-Encoding: gzip,deflate[\r][\n]"
+http-outgoing-1 >> "[\r][\n]"
+http-outgoing-1 << "HTTP/1.1 200 OK[\r][\n]"
+http-outgoing-1 << "Content-Length:15[\r][\n]"
+http-outgoing-1 << "Content-Type:application/json; charset=utf-8[\r][\n]"
+http-outgoing-1 << "cache-control:no-cache[\r][\n]"
+http-outgoing-1 << "[\r][\n]"
+http-outgoing-1 << "{"value":false}"
+http-outgoing-1 << HTTP/1.1 200 OK
+http-outgoing-1 << Content-Length:15
+http-outgoing-1 << Content-Type:application/json; charset=utf-8
+http-outgoing-1 << cache-control:no-cache
+Connection can be kept alive indefinitely
+Connection [id: 1][route: {}->http://localhost:10174] can be kept alive indefinitely
+Connection released: [id: 1][route: {}->http://localhost:10174][total kept alive: 1; route allocated: 1 of 2000; total allocated: 1 of 2000]

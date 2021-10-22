@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 import steps.TestBase;
 import java.io.IOException;
 import java.util.Locale;
-
 import static java.lang.Thread.sleep;
 
 public class SendMessage extends TestBase {
@@ -36,7 +35,6 @@ public class SendMessage extends TestBase {
 
     @And("goes to the second step")
     public void userGoSecondStep() throws IOException, InterruptedException  {
-
         smsPage.goSecondStep();
         sleep(5000);
     }
@@ -57,10 +55,34 @@ public class SendMessage extends TestBase {
         smsPage.verify();
     }
 
-    @When("^do a (.*?) with (.*?) status$")
-    public void theUserOdACampaignWithValidStatus(String type, String status) throws IOException, InterruptedException {
-        smsPage.createMessage(type, status);
-        smsPage.sendMessage();
+    @When("^the user do a (.*?) with (.*?)$")
+    public void theUserDoACampaign (String type, String status) throws IOException, InterruptedException {
+        switch (type.toLowerCase(Locale.ROOT).trim()) {
+            case "normal shipping":
+            case "premium shipping":
+            case "flash shipping":
+                smsPage.createMessage(type, status);
+                smsPage.sendMessage();
+                break;
+            case "voice camping":
+                voicePage.createMessage();
+                voicePage.sendMessage();
+                break;
+            case "whatsapp":
+                System.out.println("5");
+                break;
+        }
+
+//        if(type.toLowerCase(Locale.ROOT).trim().contains("normal") ||
+//                type.toLowerCase(Locale.ROOT).trim().contains("premium") ||
+//                type.toLowerCase(Locale.ROOT).trim().contains("flash")){
+//            smsPage.createMessage(type, status);
+//            smsPage.sendMessage();
+//        } else if(type.toLowerCase(Locale.ROOT).trim().contains("voice")){
+//
+//        } else if(type.toLowerCase(Locale.ROOT).trim().contains("whats")){
+//            System.out.println("hola");
+//        }
     }
 
     @And("^send a sample campaign$")

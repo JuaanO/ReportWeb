@@ -1,0 +1,62 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.File;
+
+import static java.lang.Thread.sleep;
+
+public class VoicePage {
+    
+    private final WebDriver driver;
+
+    private final By numberInput, messageInput, processButton, sendButton;
+
+    public VoicePage(WebDriver driver) {
+        this.driver = driver;
+        numberInput = By.xpath("//*[@id='selectName']");
+        messageInput = By.xpath("//*[@id='file-input']");
+        processButton = By.xpath("//*[@data-target='#modalEnviarSMS']");
+        sendButton = By.xpath("//*[@id='buttonSend']");
+    }
+
+    public void createMessage() throws InterruptedException {
+//        sleep(4000);
+//        File file = new File("./src/test/resources/files/audios/audioVoice.mp3");
+//        driver.findElement(messageInput).sendKeys(file.getAbsolutePath());
+//        sleep(6000);
+        new WebDriverWait(driver, 6000).until(
+                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        WebDriverWait wait = new WebDriverWait(driver, 6000);
+        wait.until(ExpectedConditions.elementToBeClickable(numberInput)).sendKeys("1234");
+//
+//        if()){
+//            driver.findElement(numberInput).sendKeys("1234");
+//        }else {
+//            wait.until(ExpectedConditions.elementToBeClickable(numberInput)).sendKeys("0000");
+//        }
+
+//        driver.findElement(numberInput).sendKeys("1234");
+        WebElement addFile = driver.findElement(messageInput);
+        ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
+        addFile.sendKeys("./src/test/resources/files/audios/audioVoice.mp3");
+
+//        driver.findElement(messageInput).sendKeys("./src/test/resources/files/audios/audioVoice.mp3");
+        wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
+//        driver.findElement(processButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
+
+//        driver.findElement(sendButton).click();
+        sleep(14000);
+    }
+
+    public void sendMessage() {
+    }
+}

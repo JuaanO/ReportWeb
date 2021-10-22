@@ -22,8 +22,8 @@ public class SendMessage extends TestBase {
         whatsAppPage.chooseMassiveCampaign();
     }
 
-    @When("^the user select a template$")
-    public void userSelectTemplate () {
+    @When("^the user select a (.*?)")
+    public void userSelectTemplate (String template) {
 
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         driver.findElement(By.xpath("//option[@value='1637']")).click();
