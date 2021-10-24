@@ -28,32 +28,19 @@ public class VoicePage {
     }
 
     public void createMessage() throws InterruptedException {
-//        sleep(4000);
-//        File file = new File("./src/test/resources/files/audios/audioVoice.mp3");
-//        driver.findElement(messageInput).sendKeys(file.getAbsolutePath());
-//        sleep(6000);
-        new WebDriverWait(driver, 6000).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        sleep(6000);
         WebDriverWait wait = new WebDriverWait(driver, 6000);
-        wait.until(ExpectedConditions.elementToBeClickable(numberInput)).sendKeys("1234");
-//
-//        if()){
-//            driver.findElement(numberInput).sendKeys("1234");
-//        }else {
-//            wait.until(ExpectedConditions.elementToBeClickable(numberInput)).sendKeys("0000");
-//        }
 
-//        driver.findElement(numberInput).sendKeys("1234");
+//        new WebDriverWait(driver, 6000).until(
+//                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+//        wait.until(ExpectedConditions.presenceOfElementLocated(numberInput)).sendKeys("1234");
+
         WebElement addFile = driver.findElement(messageInput);
         ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
         addFile.sendKeys("./src/test/resources/files/audios/audioVoice.mp3");
 
-//        driver.findElement(messageInput).sendKeys("./src/test/resources/files/audios/audioVoice.mp3");
         wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
-//        driver.findElement(processButton).click();
         wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
-
-//        driver.findElement(sendButton).click();
         sleep(14000);
     }
 
