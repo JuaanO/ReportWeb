@@ -6,11 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import steps.TestBase;
-
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Locale;
-import java.util.Properties;
 
 import static java.lang.Thread.sleep;
 

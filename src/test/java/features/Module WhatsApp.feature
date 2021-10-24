@@ -3,7 +3,7 @@ Feature: As a valid and logged user do campaigns, with all possible
   Premium shipping, Flash shipping).
 
   @WS
-  Scenario Outline: The user do a "Fast Send" with all status
+  Scenario Outline: The user do a WhatsApp "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When the user select a <template>
 
@@ -15,8 +15,8 @@ Feature: As a valid and logged user do campaigns, with all possible
 
 
   @WS1
-  Scenario Outline: The user do a "Masive campaing" with all status
-    Given a user logged to Tellit choose a <Option> option
+  Scenario Outline: The user do a WhatsApp "Masive campaing" with ..
+    Given a user logged to Tellit choose a <Option>
     When chooses a massive whatsapp campaign option
     And selectc template
     And Selects and chooses recipient <source> de ws

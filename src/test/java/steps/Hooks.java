@@ -2,8 +2,8 @@ package steps;
 
 import helpers.Helpers;
 import io.cucumber.java.*;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,17 +21,17 @@ import java.util.Properties;
 
 public class Hooks {
 
-    private static final Logger logger = LogManager.getLogger(Hooks.class);
     private static WebDriver driver;
     private static int numberOfCase = 0;
     private static String BROWSER = "chrome";
+    static Logger logger = LogManager.getLogger();
 
     @Before
     public void setUp() throws IOException {
         numberOfCase++;
-            Properties props = new Properties();
-            props.load(new FileReader("src/test/resources/config.properties"));
-            System.out.println("Scenario: " + numberOfCase + " is running ..");
+        Properties props = new Properties();
+        props.load(new FileReader("src/test/resources/config.properties"));
+        logger.info("Scenario: " + numberOfCase + " is running ..");
         try
         {
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -51,7 +51,7 @@ public class Hooks {
                 System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
                 driver = new ChromeDriver();
                 Capabilities.initLocal(driver);
-                logger.info("Iniciando desde Chrome!!");
+                logger.info("-------> Local Execution from Chrome!!");
             } else if (BROWSER.equalsIgnoreCase("firefox")) {
                 System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
                 FirefoxProfile profile = new FirefoxProfile();
@@ -61,22 +61,10 @@ public class Hooks {
                 options.setProfile(profile);
                 driver = new FirefoxDriver(options);
                 Capabilities.initLocal(driver);
-                logger.info("Iniciando desde Firefox!!");
+                logger.info("-------> Local Execution from Firefox!!");
             }
         }
     }
-
-//    @AfterStep
-//    public void embedPhotoAfter(Scenario scenario){
-//        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//        scenario.embed(screenshot, "image/jpeg");
-//    }
-
-//    @BeforeStep
-//    public void embedPhotoBefore(Scenario scenario){
-//        final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//        scenario.embed(screenshot, "image/png");
-//    }
 
     @After
     public void tearDown(Scenario scenario) {
@@ -85,6 +73,7 @@ public class Hooks {
             scenario.embed(screenshot, "image/jpeg");
         }
         driver.close();
+        logger.info("-------> Close Driver !!");
     }
 
     public static WebDriver getDriver() {

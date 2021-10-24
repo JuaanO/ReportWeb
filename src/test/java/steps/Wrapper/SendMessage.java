@@ -1,4 +1,4 @@
-package steps.Sms;
+package steps.Wrapper;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -65,24 +65,15 @@ public class SendMessage extends TestBase {
                 smsPage.sendMessage();
                 break;
             case "voice camping":
+                logger.warn("ingreso a VOZ");
                 voicePage.createMessage();
                 voicePage.sendMessage();
                 break;
             case "whatsapp":
+
                 System.out.println("5");
                 break;
         }
-
-//        if(type.toLowerCase(Locale.ROOT).trim().contains("normal") ||
-//                type.toLowerCase(Locale.ROOT).trim().contains("premium") ||
-//                type.toLowerCase(Locale.ROOT).trim().contains("flash")){
-//            smsPage.createMessage(type, status);
-//            smsPage.sendMessage();
-//        } else if(type.toLowerCase(Locale.ROOT).trim().contains("voice")){
-//
-//        } else if(type.toLowerCase(Locale.ROOT).trim().contains("whats")){
-//            System.out.println("hola");
-//        }
     }
 
     @And("^send a sample campaign$")

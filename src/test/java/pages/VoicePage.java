@@ -1,15 +1,12 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.io.File;
 
 import static java.lang.Thread.sleep;
 
@@ -38,12 +35,13 @@ public class VoicePage {
         WebElement addFile = driver.findElement(messageInput);
         ((RemoteWebElement)addFile).setFileDetector(new LocalFileDetector());
         addFile.sendKeys("./src/test/resources/files/audios/audioVoice.mp3");
+        wait.until(ExpectedConditions.elementToBeClickable(numberInput)).sendKeys("400");
 
-        wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
-        sleep(14000);
     }
 
     public void sendMessage() {
+        WebDriverWait wait = new WebDriverWait(driver, 6000);
+        wait.until(ExpectedConditions.elementToBeClickable(processButton)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(sendButton)).click();
     }
 }
