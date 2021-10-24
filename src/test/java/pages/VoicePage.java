@@ -13,6 +13,7 @@ import static java.lang.Thread.sleep;
 public class VoicePage {
     
     private final WebDriver driver;
+    private final int TIMEOUT = 30;
 
     private final By numberInput, messageInput, processButton, sendButton;
 

@@ -32,8 +32,7 @@ public class Hooks {
         Properties props = new Properties();
         props.load(new FileReader("src/test/resources/config.properties"));
         logger.info("Scenario: " + numberOfCase + " is running ..");
-        try
-        {
+        try {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("browserName", "chrome");
             capabilities.setCapability("enableVNC", true);
@@ -44,10 +43,8 @@ public class Hooks {
             driver = new RemoteWebDriver(url, capabilities);
             Capabilities.initDocker(driver);
 
-        }
-        catch(UnreachableBrowserException e)
-        {
-            if (BROWSER.equalsIgnoreCase("chrome")){
+        } catch (UnreachableBrowserException e) {
+            if (BROWSER.equalsIgnoreCase("chrome")) {
                 System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
                 driver = new ChromeDriver();
                 Capabilities.initLocal(driver);

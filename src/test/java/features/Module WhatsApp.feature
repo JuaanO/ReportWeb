@@ -1,20 +1,21 @@
+@WS
 Feature: As a valid and logged user do campaigns, with all possible
   status. Sending of messages of different types (Normal shipping,
   Premium shipping, Flash shipping).
 
-  @WS
+  @wsp @FastCampaign
   Scenario Outline: The user do a WhatsApp "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
-    When the user select a <template>
+#    When the user select a <template>
+    When the user do a whatsapp fast campaign with a <template>
 
     Examples:
-      | option      | template      |
-      | Whatsapp    | que plantilla |
+      | option      |template |
+      | whatsapp    | este texto se debe remplazar por la plantilla|
 #      | SMS    | Premium shipping | Invalid |
 #      | SMS    | Flash shipping   | Valid   |
 
-
-  @WS1
+  @WS1 @SendMassiveCampaign
   Scenario Outline: The user do a WhatsApp "Masive campaing" with ..
     Given a user logged to Tellit choose a <Option>
     When chooses a massive whatsapp campaign option
@@ -32,4 +33,3 @@ Feature: As a valid and logged user do campaigns, with all possible
 #      | Whatsapp    | Normal shipping | file  |
 #      | SMS    | Premium shipping | Invalid |
 #      | SMS    | Flash shipping   | Valid   |
-

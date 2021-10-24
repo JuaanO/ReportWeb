@@ -3,23 +3,18 @@ Feature: As a valid and logged user do a SMS campaigns, with all possible
   status. Sending of messages of different types (Normal shipping,
   Premium shipping, Flash shipping).
 
-  @highProprity @SendFastCampaign
+  @FastCampaign
   Scenario Outline: The user do a SMS "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
-    When the user do a <fast campaign> with <status>
-
-#  When the user do a sms fast campaign with a valid number
-#  When the user do a voice fast campaign with a tts
-#  When the user do a whatsapp campaign with a template
-#  When the user do a sms fast campaign with a invalid number
+    When the user do a <fast campaign> with a <status>
 
     Examples:
       | option | fast campaign | status  |
       | sms    | normal shipping   | valid   |
-      | sms    | premium shipping  | valid   |
-      | sms    | flash shipping    | invalid |
+#      | sms    | premium shipping  | valid   |
+#      | sms    | flash shipping    | invalid |
 
-  @highProprity @SendMassiveCampaign
+  @SendMassiveCampaign
   Scenario Outline: The user do a SMS "Massive Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When chooses a massive sms campaign option
