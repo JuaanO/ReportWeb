@@ -13,31 +13,31 @@ public class MassiveCampaign extends TestBase {
     private static final long TIMEOUT = 5;
     @When("^chooses a massive whatsapp campaign option$")
     public void theUserChoosesAMassiveSmsCampaignOption() {
-        whatsAppPage.chooseMassiveCampaign();
+        whatsAppMassiveCampaignPage.chooseMassiveCampaign();
     }
 
     @And("^Selects and chooses recipient (.*?) de ws")
     public void theUserSelectsRecipientSource(String source) throws IOException, InterruptedException {
         if(source.toLowerCase(Locale.ROOT).trim().contains("group")){
             sleep(1000);
-            whatsAppPage.chooseDataSource();
-            whatsAppPage.chooseGroup();
-            whatsAppPage.loadGroup();
+            whatsAppMassiveCampaignPage.chooseDataSource();
+            whatsAppMassiveCampaignPage.chooseGroup();
+            whatsAppMassiveCampaignPage.loadGroup();
         } else if (source.toLowerCase(Locale.ROOT).trim().contains("file")){
 
-            whatsAppPage.loadFile();
-            whatsAppPage.chooseFileGsmColumn();
+            whatsAppMassiveCampaignPage.loadFile();
+            whatsAppMassiveCampaignPage.chooseFileGsmColumn();
         }
     }
 
     @And("^input a name for campaing$")
     public void inputANameForCampaing() throws IOException  {
-        whatsAppPage.inputANameForCampaing();
+        whatsAppMassiveCampaignPage.inputANameForCampaing();
     }
 
     @And("^goes to the third step en WS$")
     public void iratercer ()  throws IOException, InterruptedException  {
-        whatsAppPage.tercerpaso();
+        whatsAppMassiveCampaignPage.tercerpaso();
         sleep(5000);
     }
 

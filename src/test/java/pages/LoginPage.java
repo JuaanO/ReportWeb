@@ -1,5 +1,7 @@
 package pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -13,6 +15,7 @@ public class LoginPage {
     private final By passwordField;
     private final By loginButton;
     private final By assetionMainPage;
+    static Logger logger = LogManager.getLogger();
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
@@ -35,7 +38,7 @@ public class LoginPage {
             Assert.assertTrue(driver.findElement(assetionMainPage).getText().contains("Products"));
         }
         catch (NoSuchElementException e){
-            System.out.println("El elemento no esta presente!! " +assetionMainPage);
+            logger.error("El elemento no esta presente!! " + assetionMainPage);
         }
     }
 }

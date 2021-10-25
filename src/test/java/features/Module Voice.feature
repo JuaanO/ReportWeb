@@ -13,5 +13,5 @@ Feature: As a valid and logged user do a SMS campaigns, with all possible
     Examples:
       | option | attached        |
       | Voice  | file record    |
-#      | Voice  | text to speach |
+      | Voice  | Texto que se convertira, en voz |
 #      | Voice  | record a audio |

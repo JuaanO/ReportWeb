@@ -1,4 +1,4 @@
-package pages;
+package pages.Reports;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;

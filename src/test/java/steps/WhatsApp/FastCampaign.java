@@ -9,7 +9,7 @@ public class FastCampaign extends TestBase {
 
     @When("^the user select a (.*?)")
     public void userSelectTemplate (String template) {
-        whatsAppPage.FastSend(template);
+        whatsAppFastCampaignPage.FastSend(template);
     }
 
     @And("^selectc template$")
