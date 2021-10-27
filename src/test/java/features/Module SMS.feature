@@ -14,7 +14,7 @@ Feature: As a valid and logged user do a SMS campaigns, with all possible
       | sms    | premium shipping  | valid   |
       | sms    | flash shipping    | invalid |
 
-  @ab
+  @massiveCampaign
   Scenario Outline: The user do a SMS "Massive Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When chooses a massive sms campaign option
@@ -22,7 +22,7 @@ Feature: As a valid and logged user do a SMS campaigns, with all possible
     And selects a message <type>
     Then enters name and message for the campaign
     Then verify data of campaign
-    And send a sample campaign
+#    And send a sample campaign
 
     Examples:
       | option | source | type        |

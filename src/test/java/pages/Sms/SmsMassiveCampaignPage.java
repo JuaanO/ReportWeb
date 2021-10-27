@@ -1,30 +1,35 @@
 package pages.Sms;
 
 import helpers.Helpers;
+import io.cucumber.java.bs.A;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Properties;
 
 import static java.lang.Thread.sleep;
 
 public class SmsMassiveCampaignPage {
-
+    static Logger logger = LogManager.getLogger();
     private final WebDriver driver;
     private final int TIMEOUT = 30;
     private final By nextTwoStepButton, nextSecondStepButton, selectFileCombobox, columnGsmCombobox,navMassiveCampaign;
     private final By openModalButton, selectTypeSampleCombobox, selectNumberToSendInput, sendSampleButton;
     private final By groupElemnt, loadGroupButton, nameCampaignInput, contentCampaignInput,groupCombobox;
-//    private final By normalShipping, flashShipping, premiumShipping ;
-//    private final By normalSms, flashSms, docSms, premiumSms, rcsSms ;
-//    private final By numberInput, messageInput, processButton, sendButton;
-//    private final By closeModal, reportOption, reportSmsOption;
+    private final By normalSms, flashSms, docSms, premiumSms, rcsSms, totalRecipients;
 
     public SmsMassiveCampaignPage(WebDriver driver) {
         this.driver = driver;
@@ -42,22 +47,12 @@ public class SmsMassiveCampaignPage {
         selectTypeSampleCombobox = By.xpath("//*[@id='typeSample']/option[2]");
         sendSampleButton = By.xpath("//*[@id='goToSendSamples']");
         navMassiveCampaign = By.xpath("//*[@id='navSendArchive']");
-//        flashShipping = By.xpath("//label[normalize-space()='Flash shipping']");
-//        premiumShipping = By.xpath("//label[normalize-space()='Premium shipping']");
-//        normalSms = By.xpath("//option[normalize-space()='Normal SMS']");
-//        flashSms = By.xpath("//option[normalize-space()='Flash SMS']");
-//        docSms = By.xpath("//option[normalize-space()='Attached Doc']");
-//        rcsSms = By.xpath("//option[normalize-space()='RCS']");
-//        premiumSms = By.xpath("//option[@value='7']");
-//        numberInput = By.xpath("//*[@id='inputGsmList']");
-//        messageInput = By.xpath("//*[@id='txtMessage']");
-//        processButton = By.xpath("//*[@id='buttonProcess']");
-//        sendButton = By.xpath("//*[@id='buttonSend']");
-//        closeModal = By.xpath("//*[@id='buttonClose']");
-//        reportOption = By.xpath("//a[@data-target='#Reportes']");
-//        reportSmsOption = By.xpath("//ul[@id='Reportes']//li[2]//a[1]");
-//        normalShipping = By.xpath("//label[normalize-space()='Normal shipping']");
-
+        normalSms = By.xpath("//option[normalize-space()='Normal SMS']");
+        flashSms = By.xpath("//option[normalize-space()='Flash SMS']");
+        docSms = By.xpath("//option[normalize-space()='Attached Doc']");
+        rcsSms = By.xpath("//option[normalize-space()='RCS']");
+        premiumSms = By.xpath("//option[@value='7']");
+        totalRecipients = By.xpath("//p[@class='m-0 pl-3 number bold flex-nowrap']");
     }
 
     public void chooseMassiveCampaign() {
@@ -84,6 +79,30 @@ public class SmsMassiveCampaignPage {
                 .sendKeys(props.getProperty("nameForMasiveCampaign"));
     }
 
+    public void chooseTypeMessage(String type) throws InterruptedException {
+        switch (type.toLowerCase(Locale.ROOT).trim()) {
+            case "normal sms":
+                driver.findElement(normalSms).click();
+                sleep(500);
+                break;
+            case "flash sms":
+                driver.findElement(flashSms).click();
+                sleep(500);
+                break;
+            case "attached doc":
+                driver.findElement(docSms).click();
+                sleep(500);
+                break;
+            case "premium sms":
+                driver.findElement(premiumSms).click();
+                sleep(500);
+                break;
+            case "rcs":
+                driver.findElement(rcsSms).click();
+                sleep(500);
+                break;
+        }
+    }
 
     public void message() throws IOException {
         Properties props = new Properties();
@@ -98,11 +117,46 @@ public class SmsMassiveCampaignPage {
         wait.until(ExpectedConditions.elementToBeClickable(nextTwoStepButton))
                 .click();
     }
-
-    public void verify() throws InterruptedException {
-        sleep(500);
-        //TENGO QUE HACRE AUN LA VALIDACION DE LA INFORMACION !!
-    }
+//
+//    public int getTotalRecipients (By element){
+//        return Integer.parseInt(driver.findElement(element).getText());
+//    }
+//
+//    public void verifyTotalRecipients() throws InterruptedException, IOException {
+//        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+//
+//        Properties props = new Properties();
+//        props.load(new FileReader("src/test/resources/config.properties"));
+//        wait.until(ExpectedConditions.presenceOfElementLocated(totalRecipients));
+//        Assert.assertTrue(getTotalRecipients(totalRecipients) >= 1);
+//
+//        WebElement referemcia = driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("messageForMasiveCampaign") + ": " + Helpers.generateDate() + "']"));
+////        Assert.assertNotNull();
+//
+//        WebElement nombrecamp =driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("nameForMasiveCampaign") +"']"));
+//        Assert.assertNotNull(driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("nameForMasiveCampaign") +"']")));
+//
+////        Assert.assertArrayEquals( "2", referemcia, "d");
+//        Assert.assertEquals(nombrecamp.getText(), "Selenium Massive Campaign");
+//
+////        WebElement a = ;
+//        logger.error(driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("nameForMasiveCampaign") +"']")));
+//
+////        sendKeys();
+//
+//
+////        logger.error("getText: " + getTotal(totalRecipients));
+////        logger.error("getText: " + driver.findElement(totalRecipients).getText());
+////        logger.error("getAttribute: " + driver.findElement(totalRecipients).getAttribute("innerHTML").toString());
+//
+////        Assert.assertTrue(driver.findElement(totalRecipients).getText().contains("Products"));
+////        try {
+////            Assert.assertTrue(driver.findElement(totalRecipients).getText().contains("Products"));
+////        }        catch (NoSuchElementException e){
+//////            logger.error("El elemento no esta presente!! " + assetionMainPage);
+////        }
+//
+//    }
     public void goSecondStep() {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(nextSecondStepButton))

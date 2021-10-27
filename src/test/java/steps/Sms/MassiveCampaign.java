@@ -31,7 +31,7 @@ public class MassiveCampaign extends TestBase {
 
     @And("^selects a message (.*?)$")
     public void theUserSelectsMessageType(String type) throws InterruptedException, IOException {
-        smsFastCampaignPage.chooseTypeMessage(type);
+        smsMassiveCampaignPage.chooseTypeMessage(type);
         userGoSecondStep();
     }
 
@@ -53,9 +53,9 @@ public class MassiveCampaign extends TestBase {
         smsMassiveCampaignPage.goToThirdStep();
     }
 
-    @Then("^verify data of campaign$")
-    public void theUserVerifyDataCampaign() throws InterruptedException {
-        smsMassiveCampaignPage.verify();
+    @Then("^verify data of campaign")
+    public void theUserVerifyDataCampaign() throws InterruptedException, IOException {
+        commons.verifyDataofCampaign();
     }
 
     @And("^send a sample campaign$")

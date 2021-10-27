@@ -13,22 +13,9 @@ public class WhatsAppFastCampaignPage {
     static Logger logger = LogManager.getLogger();
     private final By selectFileCombobox;
 
-//    private final By navMassiveCampaign;
-//    private final By groupCombobox;
-//    private final By groupElemnt;
-//    private final By loadGroupButton;
-//    private final By nameCampaignInput;
-//    private final By nextTwoStepButton;
-
     public WhatsAppFastCampaignPage(WebDriver driver) {
         this.driver = driver;
         selectFileCombobox = By.xpath("//input[@type='file']");
-//        navMassiveCampaign = By.xpath("//*[@id='navSendArchive']");
-//        groupCombobox = By.xpath("//option[normalize-space()='Groups']");
-//        groupElemnt = By.xpath("//label[@for='exampleCheck1']");
-//        loadGroupButton = By.xpath("//*[@id='loadAddreseesByGroup']");
-//        nameCampaignInput = By.xpath("//input[@id='campaignNameInput']");
-//        nextTwoStepButton = By.xpath("//*[@id='stepOneNextBtn']");
     }
 
     public void FastSend(String template) {

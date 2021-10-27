@@ -15,7 +15,7 @@ Feature: As a valid and logged user do campaigns, with all possible
 #      | SMS    | Premium shipping | Invalid |
 #      | SMS    | Flash shipping   | Valid   |
 
-  @WS1 @SendMassiveCampaign
+  @WS1
   Scenario Outline: The user do a WhatsApp "Masive campaing" with ..
     Given a user logged to Tellit choose a <Option>
     When chooses a massive whatsapp campaign option

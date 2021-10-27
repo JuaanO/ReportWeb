@@ -22,7 +22,8 @@ public class Helpers {
 
     public static String generateDate() {
         Date objDate = new Date();
-        String strDateFormat = "EEEE MMMM d HH:mm:ss";
+//        String strDateFormat = "EEEE MMMM d HH:mm:ss";
+        String strDateFormat = "EEEE MMMM d";
         SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat, Locale.UK);
         return objSDF.format(objDate);
     }
