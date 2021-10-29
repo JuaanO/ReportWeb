@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="runner.runTest" time="178.094" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="runner.runTest" time="36.017" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_301\jre\bin"/>
@@ -41,13 +41,13 @@
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.8"/>
     <property name="file.encoding" value="Cp1252"/>
-    <property name="cucumber.filter.tags" value="@WhatsApp"/>
+    <property name="cucumber.filter.tags" value="@fastCampaign1"/>
     <property name="user.name" value="InforSys"/>
     <property name="java.class.path" value="C:\maven\boot\plexus-classworlds-2.6.0.jar"/>
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_301\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test -Dcucumber.filter.tags=@WhatsApp"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test -Dcucumber.filter.tags=@fastCampaign1"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="en"/>
     <property name="user.language.format" value="es"/>
@@ -67,8 +67,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="As a valid and logged user do campaigns, with all possible" name="The user do a WhatsApp &quot;Fast Campaign&quot; with .." time="35.504"/>
-  <testcase classname="As a valid and logged user do campaigns, with all possible" name="The user do a WhatsApp &quot;Masive campaing&quot; with .." time="47.902"/>
-  <testcase classname="As a valid and logged user do campaigns, with all possible" name="The user do a WhatsApp &quot;Masive campaing&quot; with .." time="49.425"/>
-  <testcase classname="As a valid and logged user do campaigns, with all possible" name="The user do a WhatsApp &quot;Masive campaing&quot; with .." time="45.263"/>
+  <testcase classname="As a valid and logged user do campaigns, with all possible" name="The user do a WhatsApp &quot;Fast Campaign&quot; with .." time="36.017"/>
 </testsuite>
