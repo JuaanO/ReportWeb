@@ -44,6 +44,19 @@ public class Hooks {
             Capabilities.initDocker(driver);
 
         } catch (UnreachableBrowserException e) {
+
+            logger.error("SE EJECUTO LOCAL NO SE PORQUE");
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("browserName", "chrome");
+            capabilities.setCapability("enableVNC", true);
+            capabilities.setCapability("enableVideo", true);
+            capabilities.setCapability("videoName", "Test Execution at " + Helpers.generateDate() + ".mp4");
+            capabilities.setCapability("enableLog", true);
+            URL url = new URL(props.getProperty("url_local"));
+            driver = new RemoteWebDriver(url, capabilities);
+            Capabilities.initDocker(driver);
+
+            logger.error("SE EJECUTO DOS VECES EN LOCAL NO SE PORQUE");
 //            if (BROWSER.equalsIgnoreCase("chrome")) {
 //                System.setProperty("webdriver.chrome.driver", "src/test/resources/linux/chromedriver");
 //                driver = new ChromeDriver();
@@ -60,7 +73,6 @@ public class Hooks {
 //                Capabilities.initLocal(driver);
 //                logger.info("-------> Local Execution from Firefox!!");
 //            }
-            logger.error("SE EJECUTO LOCAL NO SE PORQUE");
         }
     }
 
