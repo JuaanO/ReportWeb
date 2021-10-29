@@ -44,35 +44,22 @@ public class Hooks {
             Capabilities.initDocker(driver);
 
         } catch (UnreachableBrowserException e) {
-
-            logger.error("SE EJECUTO LOCAL NO SE PORQUE");
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("browserName", "chrome");
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
-            capabilities.setCapability("videoName", "Test Execution at " + Helpers.generateDate() + ".mp4");
-            capabilities.setCapability("enableLog", true);
-            URL url = new URL(props.getProperty("url_local"));
-            driver = new RemoteWebDriver(url, capabilities);
-            Capabilities.initDocker(driver);
-
-            logger.error("SE EJECUTO DOS VECES EN LOCAL NO SE PORQUE");
-//            if (BROWSER.equalsIgnoreCase("chrome")) {
-//                System.setProperty("webdriver.chrome.driver", "src/test/resources/linux/chromedriver");
-//                driver = new ChromeDriver();
-//                Capabilities.initLocal(driver);
-//                logger.info("-------> Local Execution from Chrome!!");
-//            } else if (BROWSER.equalsIgnoreCase("firefox")) {
-//                System.setProperty("webdriver.gecko.driver", "src/test/resources/linux/chromedriver");
-//                FirefoxProfile profile = new FirefoxProfile();
-//                FirefoxOptions options = new FirefoxOptions();
-//                profile.setPreference("intl.accept_languages", "en-GB");
-//                options.setCapability("Marionette", false);
-//                options.setProfile(profile);
-//                driver = new FirefoxDriver(options);
-//                Capabilities.initLocal(driver);
-//                logger.info("-------> Local Execution from Firefox!!");
-//            }
+            if (BROWSER.equalsIgnoreCase("chrome")) {
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/linux/chromedriver");
+                driver = new ChromeDriver();
+                Capabilities.initLocal(driver);
+                logger.info("-------> Local Execution from Chrome!!");
+            } else if (BROWSER.equalsIgnoreCase("firefox")) {
+                System.setProperty("webdriver.gecko.driver", "src/test/resources/linux/chromedriver");
+                FirefoxProfile profile = new FirefoxProfile();
+                FirefoxOptions options = new FirefoxOptions();
+                profile.setPreference("intl.accept_languages", "en-GB");
+                options.setCapability("Marionette", false);
+                options.setProfile(profile);
+                driver = new FirefoxDriver(options);
+                Capabilities.initLocal(driver);
+                logger.info("-------> Local Execution from Firefox!!");
+            }
         }
     }
 
