@@ -44,22 +44,23 @@ public class Hooks {
             Capabilities.initDocker(driver);
 
         } catch (UnreachableBrowserException e) {
-            if (BROWSER.equalsIgnoreCase("chrome")) {
-                System.setProperty("webdriver.chrome.driver", "src/test/resources/linux/chromedriver");
-                driver = new ChromeDriver();
-                Capabilities.initLocal(driver);
-                logger.info("-------> Local Execution from Chrome!!");
-            } else if (BROWSER.equalsIgnoreCase("firefox")) {
-                System.setProperty("webdriver.gecko.driver", "src/test/resources/linux/chromedriver");
-                FirefoxProfile profile = new FirefoxProfile();
-                FirefoxOptions options = new FirefoxOptions();
-                profile.setPreference("intl.accept_languages", "en-GB");
-                options.setCapability("Marionette", false);
-                options.setProfile(profile);
-                driver = new FirefoxDriver(options);
-                Capabilities.initLocal(driver);
-                logger.info("-------> Local Execution from Firefox!!");
-            }
+//            if (BROWSER.equalsIgnoreCase("chrome")) {
+//                System.setProperty("webdriver.chrome.driver", "src/test/resources/linux/chromedriver");
+//                driver = new ChromeDriver();
+//                Capabilities.initLocal(driver);
+//                logger.info("-------> Local Execution from Chrome!!");
+//            } else if (BROWSER.equalsIgnoreCase("firefox")) {
+//                System.setProperty("webdriver.gecko.driver", "src/test/resources/linux/chromedriver");
+//                FirefoxProfile profile = new FirefoxProfile();
+//                FirefoxOptions options = new FirefoxOptions();
+//                profile.setPreference("intl.accept_languages", "en-GB");
+//                options.setCapability("Marionette", false);
+//                options.setProfile(profile);
+//                driver = new FirefoxDriver(options);
+//                Capabilities.initLocal(driver);
+//                logger.info("-------> Local Execution from Firefox!!");
+//            }
+            logger.error("SE EJECUTO LOCAL NO SE PORQUE");
         }
     }
 
