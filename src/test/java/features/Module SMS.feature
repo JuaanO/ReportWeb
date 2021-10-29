@@ -3,7 +3,7 @@ Feature: As a valid and logged user do a SMS campaigns, with all possible
   status. Sending of messages of different types (Normal shipping,
   Premium shipping, Flash shipping).
 
-  @FastCampaign
+  @fastCampaign
   Scenario Outline: The user do a SMS "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When the user do a <fast campaign> with a <status>

@@ -1,0 +1,7 @@
+numero,nombre,codigo,mensaje,empresa,direccion,correo
+593987288333,juan jose, 593,Mensaje, aldeamo, av.av y av, "juan.estrella@aldeamo.com"
+987288333,juan jose, 593,Mensaje, aldeamo, av.av y av, 'juan.estrella@aldeamo.com'
+3057223559,Victor, 57,Mensaje, aldeamo, av.av y av,juan.estrella@aldeamo.com
+3057223550,Victo, 57,Mensaje, aldeamo, av.av y av, juan.estrella@aldeamo.com
+3057223551,Vict, 57,Mensaje, aldeamo, av.av y av, juan.estrella@aldeamo.com
+3057223553,Vict, 57,Mensaje, aldeamo, av.av y av, juan.estrella@aldeamo.com

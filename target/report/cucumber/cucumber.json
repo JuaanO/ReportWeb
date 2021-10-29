@@ -1,0 +1,472 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2021-10-29T19:18:15.762Z",
+        "before": [
+          {
+            "result": {
+              "duration": 19760000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 13,
+        "name": "The user do a WhatsApp \"Fast Campaign\" with ..",
+        "description": "",
+        "id": "as-a-valid-and-logged-user-do-campaigns--with-all-possible;the-user-do-a-whatsapp-\"fast-campaign\"-with-..;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 128000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 200000000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "a user logged to Tellit choose a whatsapp",
+            "match": {
+              "arguments": [
+                {
+                  "val": "whatsapp",
+                  "offset": 33
+                }
+              ],
+              "location": "steps.Mashup.mashUp.aUserLoggedToTellitChooseAnOption(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 15049000000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "the user do a whatsapp fast campaign with a Template SeleniumWhatsApp",
+            "match": {
+              "arguments": [
+                {
+                  "val": "whatsapp fast campaign",
+                  "offset": 14
+                },
+                {
+                  "val": "Template SeleniumWhatsApp",
+                  "offset": 44
+                }
+              ],
+              "location": "steps.Commons.FastCampaign.theUserDoACampaign(java.lang.String,java.lang.String)"
+            },
+            "keyword": "When "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WhatsApp"
+          },
+          {
+            "name": "@FastCampaign1"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-10-29T19:18:50.992Z",
+        "before": [
+          {
+            "result": {
+              "duration": 16377000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 27,
+        "name": "The user do a WhatsApp \"Masive campaing\" with ..",
+        "description": "",
+        "id": "as-a-valid-and-logged-user-do-campaigns--with-all-possible;the-user-do-a-whatsapp-\"masive-campaing\"-with-..;;2",
+        "after": [
+          {
+            "result": {
+              "duration": 97000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 151000000,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "a user logged to Tellit choose a Whatsapp",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Whatsapp",
+                  "offset": 33
+                }
+              ],
+              "location": "steps.Mashup.mashUp.aUserLoggedToTellitChooseAnOption(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5614000000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "the user choose a Template SeleniumWhatsApp with Parameter and select a file",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Template SeleniumWhatsApp with Parameter",
+                  "offset": 18
+                },
+                {
+                  "val": "file",
+                  "offset": 72
+                }
+              ],
+              "location": "steps.WhatsApp.MassiveCampaign.theUserSelectsRecipientSource(java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 774000000,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "the user fill up the necessary with tags in second step",
+            "match": {
+              "arguments": [
+                {
+                  "val": "with tags",
+                  "offset": 31
+                }
+              ],
+              "location": "steps.WhatsApp.MassiveCampaign.dataNecesary(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 10568000000,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "goes to the third step en WS",
+            "match": {
+              "location": "steps.WhatsApp.MassiveCampaign.iratercer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 14306000000,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "verify data of campaign",
+            "match": {
+              "location": "steps.Sms.MassiveCampaign.theUserVerifyDataCampaign()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WhatsApp"
+          },
+          {
+            "name": "@massiveCampaign"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-10-29T19:19:38.896Z",
+        "before": [
+          {
+            "result": {
+              "duration": 15387000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 28,
+        "name": "The user do a WhatsApp \"Masive campaing\" with ..",
+        "description": "",
+        "id": "as-a-valid-and-logged-user-do-campaigns--with-all-possible;the-user-do-a-whatsapp-\"masive-campaing\"-with-..;;3",
+        "after": [
+          {
+            "result": {
+              "duration": 93000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 157000000,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "a user logged to Tellit choose a Whatsapp",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Whatsapp",
+                  "offset": 33
+                }
+              ],
+              "location": "steps.Mashup.mashUp.aUserLoggedToTellitChooseAnOption(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 5819000000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "the user choose a Template SeleniumWhatsApp and select a file",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Template SeleniumWhatsApp",
+                  "offset": 18
+                },
+                {
+                  "val": "file",
+                  "offset": 57
+                }
+              ],
+              "location": "steps.WhatsApp.MassiveCampaign.theUserSelectsRecipientSource(java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 331000000,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "the user fill up the necessary without tags in second step",
+            "match": {
+              "arguments": [
+                {
+                  "val": "without tags",
+                  "offset": 31
+                }
+              ],
+              "location": "steps.WhatsApp.MassiveCampaign.dataNecesary(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 12313000000,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "goes to the third step en WS",
+            "match": {
+              "location": "steps.WhatsApp.MassiveCampaign.iratercer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 15316000000,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "verify data of campaign",
+            "match": {
+              "location": "steps.Sms.MassiveCampaign.theUserVerifyDataCampaign()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WhatsApp"
+          },
+          {
+            "name": "@massiveCampaign"
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2021-10-29T19:20:28.321Z",
+        "before": [
+          {
+            "result": {
+              "duration": 16486000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.setUp()"
+            }
+          }
+        ],
+        "line": 29,
+        "name": "The user do a WhatsApp \"Masive campaing\" with ..",
+        "description": "",
+        "id": "as-a-valid-and-logged-user-do-campaigns--with-all-possible;the-user-do-a-whatsapp-\"masive-campaing\"-with-..;;4",
+        "after": [
+          {
+            "result": {
+              "duration": 90000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "steps.Hooks.tearDown(io.cucumber.java.Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 151000000,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "a user logged to Tellit choose a Whatsapp",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Whatsapp",
+                  "offset": 33
+                }
+              ],
+              "location": "steps.Mashup.mashUp.aUserLoggedToTellitChooseAnOption(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 6913000000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "the user choose a Template SeleniumWhatsApp and select a group",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Template SeleniumWhatsApp",
+                  "offset": 18
+                },
+                {
+                  "val": "group",
+                  "offset": 57
+                }
+              ],
+              "location": "steps.WhatsApp.MassiveCampaign.theUserSelectsRecipientSource(java.lang.String,java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 361000000,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "the user fill up the necessary without tags in second step",
+            "match": {
+              "arguments": [
+                {
+                  "val": "without tags",
+                  "offset": 31
+                }
+              ],
+              "location": "steps.WhatsApp.MassiveCampaign.dataNecesary(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5931000000,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "goes to the third step en WS",
+            "match": {
+              "location": "steps.WhatsApp.MassiveCampaign.iratercer()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 15323000000,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "verify data of campaign",
+            "match": {
+              "location": "steps.Sms.MassiveCampaign.theUserVerifyDataCampaign()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@WhatsApp"
+          },
+          {
+            "name": "@massiveCampaign"
+          }
+        ]
+      }
+    ],
+    "name": "As a valid and logged user do campaigns, with all possible",
+    "description": "  status. Sending of messages of different types (Normal shipping,\n  Premium shipping, Flash shipping).",
+    "id": "as-a-valid-and-logged-user-do-campaigns--with-all-possible",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/features/Module%20WhatsApp.feature",
+    "tags": [
+      {
+        "name": "@WhatsApp",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
