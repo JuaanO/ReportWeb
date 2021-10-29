@@ -45,12 +45,12 @@ public class Hooks {
 
         } catch (UnreachableBrowserException e) {
             if (BROWSER.equalsIgnoreCase("chrome")) {
-//                System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/linux/chromedriver");
                 driver = new ChromeDriver();
                 Capabilities.initLocal(driver);
                 logger.info("-------> Local Execution from Chrome!!");
             } else if (BROWSER.equalsIgnoreCase("firefox")) {
-//                System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+                System.setProperty("webdriver.gecko.driver", "src/test/resources/linux/chromedriver");
                 FirefoxProfile profile = new FirefoxProfile();
                 FirefoxOptions options = new FirefoxOptions();
                 profile.setPreference("intl.accept_languages", "en-GB");
