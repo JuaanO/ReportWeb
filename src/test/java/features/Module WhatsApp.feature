@@ -1,35 +1,29 @@
-@WS
+@WhatsApp
 Feature: As a valid and logged user do campaigns, with all possible
   status. Sending of messages of different types (Normal shipping,
   Premium shipping, Flash shipping).
 
-  @wsp @FastCampaign
+  @FastCampaign1
   Scenario Outline: The user do a WhatsApp "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
-#    When the user select a <template>
     When the user do a whatsapp fast campaign with a <template>
 
     Examples:
-      | option      |template |
-      | whatsapp    | este texto se debe remplazar por la plantilla|
+      | option   | template                  |
+      | whatsapp | Template SeleniumWhatsApp |
 #      | SMS    | Premium shipping | Invalid |
 #      | SMS    | Flash shipping   | Valid   |
 
-  @WS1
+  @massiveCampaign
   Scenario Outline: The user do a WhatsApp "Masive campaing" with ..
     Given a user logged to Tellit choose a <Option>
-    When chooses a massive whatsapp campaign option
-    And selectc template
-    And Selects and chooses recipient <source> de ws
-    And goes to the second step
-    And input a name for campaing
+    And the user choose a <template> and select a <source>
+    And the user fill up the necessary <data> in second step
     And goes to the third step en WS
+    Then verify data of campaign
 
     Examples:
-      | Option | Fast Send       | source |
-      | Whatsapp    | Normal shipping | file  |
-      | Whatsapp    | Normal shipping | group  |
-#      | Whatsapp    | Normal shipping | file  |
-#      | Whatsapp    | Normal shipping | file  |
-#      | SMS    | Premium shipping | Invalid |
-#      | SMS    | Flash shipping   | Valid   |
+      | Option   | source | template                                 | data         |
+      | Whatsapp | file   | Template SeleniumWhatsApp with Parameter | with tags    |
+      | Whatsapp | file   | Template SeleniumWhatsApp                | without tags |
+      | Whatsapp | group  | Template SeleniumWhatsApp                | without tags |

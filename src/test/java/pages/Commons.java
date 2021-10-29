@@ -20,7 +20,6 @@ public class Commons {
     private final By totalRecipients;
     private final int TIMEOUT = 30;
     public Commons(WebDriver driver) {
-
         this.driver = driver;
         totalRecipients = By.xpath("//p[@class='m-0 pl-3 number bold flex-nowrap']");
     }
@@ -38,8 +37,8 @@ public class Commons {
         wait.until(ExpectedConditions.presenceOfElementLocated(totalRecipients));
         Assert.assertTrue(getTotalRecipients(totalRecipients) >= 1);
 
-        WebElement referemcia = driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("messageForMasiveCampaign") + ": " + Helpers.generateDate() + "']"));
-        Assert.assertNotNull(referemcia);
+//        WebElement referemcia = driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("messageForMasiveCampaign") + ": " + Helpers.generateDate() + "']"));
+//        Assert.assertNotNull(referemcia);
 
         WebElement nombrecamp =driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("nameForMasiveCampaign") +"']"));
         Assert.assertNotNull(driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("nameForMasiveCampaign") +"']")));
@@ -47,21 +46,30 @@ public class Commons {
 //        Assert.assertArrayEquals( "2", referemcia, "d");
         Assert.assertEquals(nombrecamp.getText(), "Selenium Massive Campaign");
 
-//        WebElement a = ;
-        logger.error(driver.findElement(By.xpath("//p[normalize-space()='"+ props.getProperty("nameForMasiveCampaign") +"']")));
-
-//        sendKeys();
-
-
-//        logger.error("getText: " + getTotal(totalRecipients));
-//        logger.error("getText: " + driver.findElement(totalRecipients).getText());
-//        logger.error("getAttribute: " + driver.findElement(totalRecipients).getAttribute("innerHTML").toString());
-
-//        Assert.assertTrue(driver.findElement(totalRecipients).getText().contains("Products"));
-//        try {
-//            Assert.assertTrue(driver.findElement(totalRecipients).getText().contains("Products"));
-//        }        catch (NoSuchElementException e){
-////            logger.error("El elemento no esta presente!! " + assetionMainPage);
-//        }
     }
+//
+//    public WebElement getTemplate (String template){
+//        WebElement tem = driver.findElement(By.xpath("//option[normalize-space()='"+template+"']"));
+//        return tem;
+//    }
+//
+//    public boolean isElementVisible(String cssLocator){
+//        return driver.findElement(By.cssSelector(cssLocator)).isDisplayed();
+//    }
+//
+//    public boolean isElementPresent(String locatorKey) {
+//        try {
+//            getTemplate(locatorKey);
+////            driver.findElement(By.xpath("//option[normalize-space()='"+locatorKey+"']"));
+////            driver.findElement(By.xpath(locatorKey));
+////            logger.error("esta en el true"+locatorKey);
+//            System.out.println("esta en el true"+locatorKey);
+//            return true;
+//        } catch (org.openqa.selenium.NoSuchElementException e) {
+////            logger.error("esta en el false"+locatorKey);
+//            System.out.println("esta en el false"+locatorKey);
+//            return false;
+//        }
+//    }
+
 }

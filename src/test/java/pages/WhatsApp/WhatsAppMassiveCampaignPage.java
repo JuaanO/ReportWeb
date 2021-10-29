@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class WhatsAppMassiveCampaignPage {
-    private static final long TIMEOUT = 5;
+    private static final long TIMEOUT = 60;
     private final WebDriver driver;
     private final By navMassiveCampaign;
     private final By groupCombobox;
@@ -76,6 +76,14 @@ public class WhatsAppMassiveCampaignPage {
         WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(ExpectedConditions.elementToBeClickable(nameCampaignInput))
                 .sendKeys(props.getProperty("nameForMasiveCampaign"));
+    }
+
+    public void selectTag () {
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//div[@class='multiselect-dropdown']")))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//ul[@class='item2']//li[1]")))).click();
+
     }
 
     public void tercerpaso() {

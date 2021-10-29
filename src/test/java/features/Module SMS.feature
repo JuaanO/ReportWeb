@@ -15,7 +15,7 @@ Feature: As a valid and logged user do a SMS campaigns, with all possible
       | sms    | flash shipping    | invalid |
 
   @massiveCampaign
-  Scenario Outline: The user do a SMS "Massive Campaign" with ..
+  Scenario Outline: The user do a SMS "Massive Campaign" with .. <option>
     Given a user logged to Tellit choose a <option>
     When chooses a massive sms campaign option
     And selects and chooses recipient <source>
