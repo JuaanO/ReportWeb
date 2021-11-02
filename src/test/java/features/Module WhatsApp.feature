@@ -14,7 +14,7 @@ Feature: As a valid and logged user do campaigns, with all possible
 #      | SMS    | Premium shipping | Invalid |
 #      | SMS    | Flash shipping   | Valid   |
 
-  @massiveCampaign
+  @massiveCampaign1
   Scenario Outline: The user do a WhatsApp "Masive campaing" with ..
     Given a user logged to Tellit choose a <Option>
     And the user choose a <template> and select a <source>

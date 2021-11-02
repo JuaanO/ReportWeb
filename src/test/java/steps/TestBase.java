@@ -25,7 +25,6 @@ public class TestBase {
 
     protected Commons commons = new Commons(driver);
 
-
     protected SmsFastCampaignPage smsFastCampaignPage = new SmsFastCampaignPage(driver);
     protected SmsMassiveCampaignPage smsMassiveCampaignPage = new SmsMassiveCampaignPage(driver);
 

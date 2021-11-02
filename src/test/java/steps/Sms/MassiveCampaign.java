@@ -53,11 +53,6 @@ public class MassiveCampaign extends TestBase {
         smsMassiveCampaignPage.goToThirdStep();
     }
 
-    @Then("^verify data of campaign")
-    public void theUserVerifyDataCampaign() throws InterruptedException, IOException {
-        commons.verifyDataofCampaign();
-        sleep(5000);
-    }
 
     @And("^send a sample campaign$")
     public void theUserChooseSendASample() {

@@ -13,13 +13,13 @@ pipeline {
         jdk 'JDK'
     }
     stages {
-        stage('Git Checkout') {
-            steps {
-                // git credentialsId: 'gitlab-aldeamo',
-                //, branch: 'experimental'
-                git credentialsId: 'personalGitHub', branch: 'master', url: 'https://github.com/JuaanO/ReportWeb.git'
-            }
-        }
+//         stage('Git Checkout') {
+//             steps {
+//                 // git credentialsId: 'gitlab-aldeamo',
+//                 //, branch: 'experimental'
+//                 git credentialsId: 'personalGitHub', branch: 'master', url: 'https://github.com/JuaanO/ReportWeb.git'
+//             }
+//         }
         stage('Maven Compile') {
             steps {
                 echo 'el maven compile'
@@ -51,7 +51,7 @@ pipeline {
                             break
                           case 'Modulo WhatsApp':
                               echo "Modulo WhatsApp"
-                              sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign1"'
+                              sh 'mvn clean test -Dcucumber.filter.tags="@WhatsApp"'
                             break
                           case 'Ejecutar todo':
                               echo "Ejecutar todo"

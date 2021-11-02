@@ -14,10 +14,10 @@ import static java.lang.Thread.sleep;
 public class MassiveCampaign extends TestBase {
 
     private static final long TIMEOUT = 5;
-    @When("^the user choose a (.*?) without (.*?)$")
-    public void theUserChoosesAMassiveSms (String template, String parameter) {
-//        whatsAppMassiveCampaignPage.chooseMassiveCampaign();
-    }
+//    @When("^the user choose a (.*?) without (.*?)$")
+//    public void theUserChoosesAMassiveSms (String template, String parameter) {
+////        whatsAppMassiveCampaignPage.chooseMassiveCampaign();
+//    }
 
     @And("^the user choose a (.*?) and select a (.*?)$")
     public void theUserSelectsRecipientSource(String template, String source) throws IOException, InterruptedException {
