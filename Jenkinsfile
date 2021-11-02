@@ -30,33 +30,37 @@ pipeline {
             steps {
                 script {
                     if (params.EjecutarPruebas == true) {
-
                         echo "EjecutarPruebas: ${params.EjecutarPruebas}"
-                        sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign1"'
+//                         sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign1"'
+                        switch(env.QuePruebas) {
+                          case 'Fast Send Campaign':
+                              echo "Fast Send Campaign"
+                              sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign"'
+                            break
+                          case 'Massive Campaign':
+                              echo "Massive Campaign"
+                              sh 'mvn clean test -Dcucumber.filter.tags="@massiveCampaign"'
+                            break
+                          case 'Modulo SMS':
+                              echo "Modulo SMS"
+                              sh 'mvn clean test -Dcucumber.filter.tags="@SMS"'
+                            break
+                          case 'Modulo Voz':
+                              echo "Modulo Voz"
+                              sh 'mvn clean test -Dcucumber.filter.tags="@Voz"'
+                            break
+                          case 'Modulo WhatsApp':
+                              echo "Modulo WhatsApp"
+                              sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign1"'
+                            break
+                          case 'Ejecutar todo':
+                              echo "Ejecutar todo"
+                              sh 'mvn clean test'
+                            break
+                        }
+
                     } else {
                         echo "EjecutarPruebas: ${params.EjecutarPruebas}"
-
-                    switch(env.QuePruebas) {
-                      case 'Fast Send Campaign':
-                          echo "Fast Send Campaign"
-                        break
-                      case 'Massive Campaign':
-                          echo "Massive Campaign"
-                        break
-                      case 'Modulo SMS':
-                          echo "Modulo SMS"
-                        break
-                      case 'Modulo Voz':
-                          echo "Modulo Voz"
-                        break
-                      case 'Modulo WhatsApp':
-                          echo "Modulo WhatsApp"
-                        break
-                      case 'Ejecutar todo':
-                          echo "Ejecutar todo"
-                        break
-                    }
-
                     }
                     // sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign1"'
                     // if (params.doTest == 'Send Messages') { sh "mvn test -Dcucumber.options='-t @SendMessage'" }
