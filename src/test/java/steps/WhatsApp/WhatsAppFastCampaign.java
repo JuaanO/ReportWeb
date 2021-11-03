@@ -5,7 +5,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import steps.TestBase;
 
-public class FastCampaign extends TestBase {
+public class WhatsAppFastCampaign extends TestBase {
 
     @When("^the user select a (.*?)")
     public void userSelectTemplate (String template) {

@@ -1,7 +1,7 @@
 @WhatsApp
-Feature: As a valid and logged user do campaigns, with all possible
-  status. Sending of messages of different types (Normal shipping,
-  Premium shipping, Flash shipping).
+Feature: As a valid and logged user I want to send massive WhatsApp
+  campaigns with files and groups, and fast WhatsApp campaigns with
+  a template.
 
   @fastCampaign1
   Scenario Outline: The user do a WhatsApp "Fast Campaign" with ..
@@ -19,7 +19,7 @@ Feature: As a valid and logged user do campaigns, with all possible
     Given a user logged to Tellit choose a <Option>
     And the user choose a <template> and select a <source>
     And the user fill up the necessary <data> in second step
-    And goes to the third step en WS
+#    And goes to the third step en WS
     Then verify data of campaign
 
     Examples:

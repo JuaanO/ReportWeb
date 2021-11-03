@@ -9,7 +9,7 @@ import java.util.Locale;
 
 import static java.lang.Thread.sleep;
 
-public class MassiveCampaign extends TestBase {
+public class SmsMassiveCampaign extends TestBase {
 
     @When("^chooses a massive sms campaign option$")
     public void theUserChoosesAMassiveSmsCampaignOption() {

@@ -11,7 +11,7 @@ import java.util.Locale;
 
 import static java.lang.Thread.sleep;
 
-public class MassiveCampaign extends TestBase {
+public class WhatsAppMassiveCampaign extends TestBase {
 
     private static final long TIMEOUT = 5;
 //    @When("^the user choose a (.*?) without (.*?)$")
@@ -61,6 +61,7 @@ public class MassiveCampaign extends TestBase {
             whatsAppMassiveCampaignPage.inputANameForCampaing();
 //            whatsAppMassiveCampaignPage.selectTag();
         }
+        whatsAppMassiveCampaignPage.tercerpaso();
     }
 
     @And("^goes to the third step en WS$")

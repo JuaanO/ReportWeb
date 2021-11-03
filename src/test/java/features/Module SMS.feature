@@ -1,7 +1,8 @@
 @SMS
-Feature: As a valid and logged user do a SMS campaigns, with all possible
-  status. Sending of messages of different types (Normal shipping,
-  Premium shipping, Flash shipping).
+Feature: As a valid and logged user I want to send massive SMS
+  campaigns with files and groups, and fast SMS campaigns
+  of different types (Normal shipping, Premium shipping and
+  Flash shipping).
 
   @fastCampaign
   Scenario Outline: The user do a SMS "Fast Campaign" with ..

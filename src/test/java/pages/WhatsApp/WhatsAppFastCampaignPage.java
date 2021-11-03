@@ -81,7 +81,7 @@ public class WhatsAppFastCampaignPage {
 //        Assert.assertFalse(isElementPresent(getTemplate(attached)));
 //        isElementPresent("");
         inputNumber();
-        sendMessage();
+//        sendMessage();
 //        Assert.assertFalse();
 //        driver.findElement(By.xpath("//button[@id='buttonProcess']")).click();
 //        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[normalize-space()='Send']")))

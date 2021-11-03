@@ -46,7 +46,7 @@ public class VoiceFastCampaignPage {
             wait.until(ExpectedConditions.elementToBeClickable(contentTSS)).sendKeys(attached);
             wait.until(ExpectedConditions.elementToBeClickable(convertTTS)).click();
         }
-        inputNumer();
+//        inputNumer();
     }
 
     public void sendMessage() {
