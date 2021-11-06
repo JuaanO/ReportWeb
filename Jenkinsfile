@@ -68,14 +68,16 @@ pipeline {
             fileIncludePattern: '**/*.json',
             jsonReportDirectory: 'target/report/cucumber/',
             pendingStepsNumber: -1,
-            reportTitle: 'test features',
+            reportTitle: 'Reporte de Test Ejecutados: ',
             skippedStepsNumber: -1,
             sortingMethod: 'ALPHABETICAL',
             undefinedStepsNumber: -1
 
             echo 'Sending email'
+            bat "del test.zip"
+            zip zipFile: 'test.zip', archive: false, dir: 'target/report/'
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", recipientProviders: [buildUser()],
-            from: '', attachmentsPattern: '**/ExtentHtml.html', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
+            from: '', attachmentsPattern: '**/ExtentHtml.html, **/image.jpg, **/.zip', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
         }
     }
 }
