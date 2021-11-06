@@ -75,7 +75,7 @@ pipeline {
 
             echo 'Sending email'
             emailext body: 'Prueba', recipientProviders: [buildUser()], subject: 'Prueba', to: 'juan.estrella@aldeamo.com'
-
+            mail bcc: '', body: 'prueba', cc: '', from: '', replyTo: '', subject: 'prueba', to: 'juan.estrella@aldeamo.com'
         }
     }
 }
