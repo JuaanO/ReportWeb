@@ -42,7 +42,7 @@ pipeline {
                               sh 'mvn clean test -Dcucumber.filter.tags="@SMS"'
                             break
                           case 'Modulo Voz':
-                              sh 'mvn clean test -Dcucumber.filter.tags="@Voz"'
+                              sh 'mvn clean test -Dcucumber.filter.tags="@massiveCampaign2"'
                             break
                           case 'Modulo WhatsApp':
                               sh 'mvn clean test -Dcucumber.filter.tags="@WhatsApp"'
@@ -75,7 +75,7 @@ pipeline {
 
             echo 'Sending email'
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", recipientProviders: [buildUser()],
-            from: '', attachmentsPattern: '**/ExtentHtml.html', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
+            from: '', attachmentsPattern: 'target/report/', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
         }
     }
 }
