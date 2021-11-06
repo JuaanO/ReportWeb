@@ -75,7 +75,7 @@ pipeline {
 
             echo 'Sending email'
 //             emailext body: 'Prueba', recipientProviders: [buildUser()], subject: 'prueba primer pipe', to: 'juan.estrella@aldeamo.com'
-            mail bcc: '', body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+            emailext bcc: '', body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
             from: '', cc: '', attachmentsPattern: '**/ExtentHtml.html', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
         }
     }
