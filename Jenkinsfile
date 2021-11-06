@@ -74,8 +74,8 @@ pipeline {
             undefinedStepsNumber: -1
 
             echo 'Sending email'
-            emailext body: 'Prueba', recipientProviders: [buildUser()], subject: 'Prueba', to: 'juan.estrella@aldeamo.com'
-            mail bcc: '', body: 'prueba', cc: '', from: '', replyTo: '', subject: 'prueba', to: 'juan.estrella@aldeamo.com'
+            emailext body: 'Prueba', recipientProviders: [buildUser()], subject: 'prueba primer pipe', to: 'juan.estrella@aldeamo.com'
+            mail bcc: '', body: 'prueba', cc: '', from: '', replyTo: '', subject: 'prueba segundo pipe', to: 'juan.estrella@aldeamo.com'
         }
     }
 }
