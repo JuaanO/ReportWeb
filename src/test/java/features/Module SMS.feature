@@ -23,7 +23,7 @@ Feature: As a valid and logged user I want to send massive SMS
     And selects a message <type>
     Then enters name and message for the campaign
     Then verify data of campaign
-#    And send a sample campaign
+    And send a sample campaign
 
     Examples:
       | option | source | type        |

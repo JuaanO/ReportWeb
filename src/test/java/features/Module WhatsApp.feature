@@ -19,7 +19,6 @@ Feature: As a valid and logged user I want to send massive WhatsApp
     Given a user logged to Tellit choose a <Option>
     And the user choose a <template> and select a <source>
     And the user fill up the necessary <data> in second step
-#    And goes to the third step en WS
     Then verify data of campaign
 
     Examples:

@@ -8,8 +8,6 @@ Feature: As a valid and logged user I want to send massive Voice
     Given a user logged to Tellit choose a <option>
     When the user do a voice fast camping with a <attached>
 
-#  Wheen the user do a sms fast
-
     Examples:
       | option | attached                        |
       | Voice  | file record                     |
@@ -24,6 +22,6 @@ Feature: As a valid and logged user I want to send massive Voice
     Then verify data of campaign
 
     Examples:
-      | option | source | type        | message                        |
-      | Voice  | file   | Informativa | file record                    |
-      | Voice  | groups | interactive | Texto que se convertira en voz |
+      | option | source | type        | message            |
+      | Voice  | file   | Informativa | file record        |
+      | Voice  | groups | interactive | esto prueba cambia |

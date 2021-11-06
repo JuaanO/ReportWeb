@@ -73,5 +73,9 @@ pipeline {
             sortingMethod: 'ALPHABETICAL',
             undefinedStepsNumber: -1
         }
+        always{
+        echo 'Sending email'
+            emailext body: 'Prueba', recipientProviders: [buildUser()], subject: 'Prueba', to: 'juan.estrella@aldeamo.com'
+        }
     }
 }
