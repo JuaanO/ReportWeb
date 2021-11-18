@@ -14,7 +14,7 @@ Feature: As a valid and logged user I want to send massive Voice
       | Voice  | Texto que se convertira, en voz |
 #      | Voice  | record a audio |
 
-  @massiveCampaign
+  @massiveCampaign1
   Scenario Outline: The user do a Voice "Massive Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When the user choose a <source> and select <type> of campaign
