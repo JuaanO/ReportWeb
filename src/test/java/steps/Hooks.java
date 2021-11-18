@@ -36,10 +36,10 @@ public class Hooks {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("browserName", "chrome");
             capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
+//            capabilities.setCapability("enableVideo", true);
             capabilities.setCapability("videoName", "Test Execution at " + Helpers.generateDate() + ".mp4");
             capabilities.setCapability("enableLog", true);
-            URL url = new URL(props.getProperty("url_local"));
+            URL url = new URL(props.getProperty("url_selenoid"));
             driver = new RemoteWebDriver(url, capabilities);
             Capabilities.initDocker(driver);
 
