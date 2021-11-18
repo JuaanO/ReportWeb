@@ -13,13 +13,13 @@ pipeline {
         jdk 'JDK'
     }
     stages {
-//         stage('Git Checkout') {
-//             steps {
-//                 // git credentialsId: 'gitlab-aldeamo',
-//                 //, branch: 'experimental'
-//                 git credentialsId: 'personalGitHub', branch: 'master', url: 'https://github.com/JuaanO/ReportWeb.git'
-//             }
-//         }
+        stage('Git Checkout') {
+            steps {
+                // git credentialsId: 'gitlab-aldeamo',
+                //, branch: 'experimental'
+                git credentialsId: 'personalGitHub', branch: 'master', url: 'https://github.com/JuaanO/ReportWeb.git'
+            }
+        }
         stage('Maven Compile') {
             steps {
                 echo 'MAVEN COMPILE'
@@ -33,7 +33,7 @@ pipeline {
                         echo "EjecutarPruebas: ${params.EjecutarPruebas}"
                         switch(env.QuePruebas) {
                           case 'Fast Send Campaign':
-                              sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign"'
+                              sh 'mvn clean test -Dcucumber.filter.tags="@fastCampaign1"'
                             break
                           case 'Massive Campaign':
                               sh 'mvn clean test -Dcucumber.filter.tags="@massiveCampaign"'
@@ -74,10 +74,33 @@ pipeline {
             undefinedStepsNumber: -1
 
             echo 'Sending email'
-            bat "del test.zip"
-            zip zipFile: 'test.zip', archive: false, dir: 'target/report/'
+            // bat "del test.zip"
+            // zip zipFile: 'test.zip', archive: false, dir: 'target/report/'
+            // zip archive: true, dir: './maven/target', glob: '', zipFile: 'maven-target.zip'
+                //                   sh 'mkdir archive'
+                // sh 'echo test > archive/test.txt'
+                // zip zipFile: 'test.zip', archive: false, dir: 'archive'
+                // archiveArtifacts artifacts: 'test.zip', fingerprint: true
+
+            script {
+                // deleteDir()
+                // sh 'mkdir archive'
+                // sh 'echo test > archive/test.txt'
+                // zip zipFile: 'prueba.zip', archive: false, dir: '/maven/target/report/'
+                // zip archive: true, dir: '/maven/target/report/*.html', glob: '', zipFile: 'maven.zip'
+                // archiveArtifacts artifacts: '**/*.zip', fingerprint: true
+                // archiveArtifacts artifacts: 'maven-target.zip', fingerprint: false
+                sh 'rm -rf archive'
+                sh 'mkdir archive'
+                sh 'echo test > archive/test.txt'
+                zip zipFile: 'test.zip', archive: true , dir: ''
+                archiveArtifacts artifacts: '**/*.html', fingerprint: true
+
+            }
+
+            // zip archive: true, dir: './maven/target', glob: '', zipFile: 'files.zip'
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", recipientProviders: [buildUser()],
-            from: '', attachmentsPattern: '**/ExtentHtml.html, **/image.jpg, **/.zip', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
+            from: 'juanjose', attachmentsPattern: '**/*.html', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
         }
     }
 }

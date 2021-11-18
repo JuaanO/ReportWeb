@@ -3,7 +3,7 @@ Feature: As a valid and logged user I want to send massive Voice
   campaigns with files and groups, and fast Voice campaigns with
   a TTS.
 
-  @fastCampaign3
+  @fastCampaign
   Scenario Outline: The user do a Voice "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When the user do a voice fast camping with a <attached>
@@ -14,7 +14,7 @@ Feature: As a valid and logged user I want to send massive Voice
       | Voice  | Texto que se convertira, en voz |
 #      | Voice  | record a audio |
 
-  @massiveCampaign2
+  @massiveCampaign
   Scenario Outline: The user do a Voice "Massive Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When the user choose a <source> and select <type> of campaign
