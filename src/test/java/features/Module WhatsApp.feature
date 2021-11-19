@@ -3,7 +3,7 @@ Feature: As a valid and logged user I want to send massive WhatsApp
   campaigns with files and groups, and fast WhatsApp campaigns with
   a template.
 
-  @fastCampaign
+  @fastCampaignWhatsApp
   Scenario Outline: The user do a WhatsApp "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When the user do a whatsapp fast campaign with a <template>
@@ -14,7 +14,7 @@ Feature: As a valid and logged user I want to send massive WhatsApp
 #      | SMS    | Premium shipping | Invalid |
 #      | SMS    | Flash shipping   | Valid   |
 
-  @massiveCampaign
+  @massiveCampaignWhatsApp
   Scenario Outline: The user do a WhatsApp "Masive campaing" with ..
     Given a user logged to Tellit choose a <Option>
     And the user choose a <template> and select a <source>

@@ -4,7 +4,7 @@ Feature: As a valid and logged user I want to send massive SMS
   of different types (Normal shipping, Premium shipping and
   Flash shipping).
 
-  @fastCampaign
+  @fastCampaignSMS
   Scenario Outline: The user do a SMS "Fast Campaign" with ..
     Given a user logged to Tellit choose a <option>
     When the user do a <fast campaign> with a <status>
@@ -15,7 +15,7 @@ Feature: As a valid and logged user I want to send massive SMS
       | sms    | premium shipping  | valid   |
       | sms    | flash shipping    | invalid |
 
-  @massiveCampaign
+  @massiveCampaignSMS
   Scenario Outline: The user do a SMS "Massive Campaign" with .. <option>
     Given a user logged to Tellit choose a <option>
     When chooses a massive sms campaign option
