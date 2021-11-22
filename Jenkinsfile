@@ -98,7 +98,7 @@ pipeline {
 
             // zip archive: true, dir: './maven/target', glob: '', zipFile: 'files.zip'
             emailext body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}", recipientProviders: [buildUser()],
-            from: 'juanjose', attachmentsPattern: '**/*.html', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
+            from: 'juanjose', attachmentsPattern: '**/Reporte de pruebas.html', replyTo: '', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", to: 'juan.estrella@aldeamo.com'
         }
     }
 }

@@ -39,7 +39,7 @@ public class Hooks {
 //            capabilities.setCapability("enableVideo", true);
             capabilities.setCapability("videoName", "Test Execution at " + Helpers.generateDate() + ".mp4");
             capabilities.setCapability("enableLog", true);
-            URL url = new URL(props.getProperty("url_selenoid"));
+            URL url = new URL(props.getProperty("url_local"));
             driver = new RemoteWebDriver(url, capabilities);
             Capabilities.initDocker(driver);
 
